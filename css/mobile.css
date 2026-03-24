@@ -1,5 +1,3 @@
-/* === MOBILE.CSS - ИСПРАВЛЕННАЯ ВЕРСИЯ === */
-
 @media screen and (max-width:1200px) {
 
 :root {
@@ -1181,6 +1179,12 @@ body:has(.page-header) main {
 	border-radius: 8px !important;
 }
 
+    
+.reviews-slider.no-reviews + .reviews-empty + .btn,
+.reviews-slider.no-reviews ~ .swiper-button-next,
+.reviews-slider.no-reviews ~ .swiper-button-prev {
+    display: none !important;
+}
 }
 
 @media screen and (max-width:800px) {
@@ -1449,6 +1453,50 @@ footer {
 	margin:0 -16px;
 	padding:0 16px;
 }
+
+.reviews-empty {
+    padding: 32px 16px !important;
+    margin: 20px 0 !important;
+}
+    
+.reviews-empty__icon {
+    width: 40px !important;
+    height: 40px !important;
+    margin: 0 auto 12px !important;
+}
+    
+.reviews-empty__icon i {
+    width: 20px !important;
+    height: 20px !important;
+}
+    
+.reviews-empty h4 {
+    font-size: 14px !important;
+}
+    
+.reviews-empty p {
+    font-size: 13px !important;
+}
+    
+.reviews-empty .btn {
+    font-size: 13px !important;
+    padding: 10px 14px 6px !important;
+}
+    
+#reviews .reviews-num__box {
+    margin: 0 0 16px !important;
+    gap: 12px !important;
+}
+    
+#reviews .item-rating span {
+    font-size: 20px !important;
+}
+    
+#reviews .rating-stars {
+    width: 70px !important;
+    height: 14px !important;
+}
+
 }
 
 @media screen and (max-width:440px) {

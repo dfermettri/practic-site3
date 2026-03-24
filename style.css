@@ -3202,6 +3202,38 @@ input[type=number] {
 	display:block;
 	border:1px solid var(--white);
 }
+
+.reviews-empty {
+	display: flex;
+
+}
+
+.reviews-empty__img {
+	width: 508px;
+	height: 260px;
+}
+
+
+.reviews-slider.has-reviews + .reviews-empty {
+    display: none;
+}
+
+.reviews-slider.has-reviews + .reviews-empty + .reviews-btn-all {
+    display: flex;
+}
+
+.reviews-slider.no-reviews {
+    display: none;
+}
+
+.reviews-slider.no-reviews + .reviews-empty {
+    display: block;
+}
+
+.reviews-slider.no-reviews + .reviews-empty + .reviews-btn-all {
+    display: none;
+}
+
 .popup-header .btn {
 	width:100%;
 	margin:24px 0 0;

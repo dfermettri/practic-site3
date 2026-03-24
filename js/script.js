@@ -155,6 +155,36 @@ var reviews = new Swiper(".reviews-slider", {
 			spaceBetween: 8,
 		},
 	},
+	on: {
+        init: function() {
+            checkReviewsEmpty();
+        }
+    }
+});
+
+function checkReviewsEmpty() {
+    const reviewsSlider = jQuery('.reviews-slider');
+    const reviewsEmpty = jQuery('.reviews-empty');
+    const reviewsBtnAll = jQuery('.reviews-btn-all');
+    const reviewSlides = reviewsSlider.find('.swiper-slide');
+    
+    if (reviewSlides.length === 0) {
+        reviewsSlider.addClass('no-reviews');
+        reviewsSlider.removeClass('has-reviews');
+        reviewsEmpty.show();
+        reviewsBtnAll.hide();
+    } else {
+        reviewsSlider.addClass('has-reviews');
+        reviewsSlider.removeClass('no-reviews');
+        reviewsEmpty.hide();
+        reviewsBtnAll.show();
+    }
+}
+
+jQuery(document).ready(function() {
+    setTimeout(function() {
+        checkReviewsEmpty();
+    }, 100);
 });
 
 var hit4 = new Swiper(".slider-similar", {
