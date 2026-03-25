@@ -3204,13 +3204,28 @@ input[type=number] {
 }
 
 .reviews-empty {
-	display: flex;
-
+    display: flex;
+    flex-direction: row; /* Выстраиваем элементы в ряд */
+    text-align: left; /* Текст внутри контента выравниваем по левому краю */
+	gap: 90px;
 }
 
 .reviews-empty__img {
-	width: 508px;
-	height: 260px;
+    width: 508px;
+    height: 260px;
+}
+
+.reviews-empty__content {
+	width: 492px;
+	height: 154px;
+	gap: 24px;
+}
+
+.reviews-empty__content .btn {
+	width: 240px;
+	height: 46px;
+    display: inline-flex !important;
+    justify-content: center !important;
 }
 
 

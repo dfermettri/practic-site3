@@ -1179,7 +1179,31 @@ body:has(.page-header) main {
 	border-radius: 8px !important;
 }
 
-    
+.reviews-empty {
+    flex-direction: column;
+    text-align: center;
+    padding: 24px;
+    gap: 24px;
+}
+
+ .reviews-empty__img {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    margin: 0 auto;
+}
+
+.reviews-empty__content {
+	max-width: 100%;
+	width: 100%;
+}
+
+.reviews-empty__content .btn {
+	justify-content: center;
+	width: 343px;
+	height: 40px;
+}
+
 .reviews-slider.no-reviews + .reviews-empty + .btn,
 .reviews-slider.no-reviews ~ .swiper-button-next,
 .reviews-slider.no-reviews ~ .swiper-button-prev {
@@ -1453,35 +1477,6 @@ footer {
 	margin:0 -16px;
 	padding:0 16px;
 }
-
-.reviews-empty {
-    padding: 32px 16px !important;
-    margin: 20px 0 !important;
-}
-    
-.reviews-empty__icon {
-    width: 40px !important;
-    height: 40px !important;
-    margin: 0 auto 12px !important;
-}
-    
-.reviews-empty__icon i {
-    width: 20px !important;
-    height: 20px !important;
-}
-    
-.reviews-empty h4 {
-    font-size: 14px !important;
-}
-    
-.reviews-empty p {
-    font-size: 13px !important;
-}
-    
-.reviews-empty .btn {
-    font-size: 13px !important;
-    padding: 10px 14px 6px !important;
-}
     
 #reviews .reviews-num__box {
     margin: 0 0 16px !important;
@@ -1509,4 +1504,35 @@ body:not(:has(.app-banner.hide)) header {
 body:not(:has(.app-banner)) header {
 	top:0!important;
 }
+}
+
+@media screen and (max-width: 375px) {
+    .reviews-empty {
+        padding: 16px !important;
+        gap: 16px !important;
+    }
+    
+    .reviews-empty__img {
+        max-width: 100% !important;
+        width: 100% !important;
+        height: auto !important;
+    }
+    
+    .reviews-empty__content {
+        width: 100% !important;
+        max-width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+    }
+    
+    .reviews-empty__content .btn {
+        width: 100% !important;
+        max-width: 280px !important;
+        margin: 0 auto !important;
+        box-sizing: border-box !important;
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
 }
