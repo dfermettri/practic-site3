@@ -577,8 +577,8 @@ main label, main label a {
 	height:19px;
 }
 .pages-slider {
-	left:0;
-	right:0;
+	left:16px;
+	right:16px;
 	top:0;
 	bottom:-1px;
 }
@@ -1273,7 +1273,7 @@ body:has(.page-header) main {
 	margin:0 0 12px;
 }
 .catalog-item__txt-box {
-	padding:0 8px 0 16px;
+	padding:0 16px;
 }
 .catalog-item__basket-box {
 	left:8px;
