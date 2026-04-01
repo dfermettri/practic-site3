@@ -11,6 +11,20 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   document.addEventListener("click", (e) => {
+    const headerMenuBtn = e.target.closest(".header-menu__box .menu-btn");
+    if (headerMenuBtn) {
+      e.preventDefault();
+      const menu = q("#menu");
+      const headerMenuBox = headerMenuBtn.closest(".header-menu__box");
+      if (menu) {
+        const isOpen = menu.style.display === "block";
+        menu.style.display = isOpen ? "none" : "block";
+        headerMenuBtn.classList.toggle("active", !isOpen);
+        if (headerMenuBox) headerMenuBox.classList.toggle("active", !isOpen);
+      }
+      return;
+    }
+
     const trigger = e.target.closest("[data-popup]");
     if (trigger) {
       const link = trigger.dataset.link;
@@ -32,6 +46,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (e.target.closest(".close, .black-bg, [data-close]")) {
       e.preventDefault();
+      const menu = q("#menu");
+      if (menu) menu.style.display = "none";
+      qa(".header-menu__box").forEach((box) => box.classList.remove("active"));
+      qa(".header-menu__box .menu-btn").forEach((btn) => btn.classList.remove("active"));
       hideAllPopups();
     }
 
@@ -53,76 +71,85 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // --- ПРОСТОЙ СЛАЙДЕР С БЕСКОНЕЧНЫМ ЛИСТАНИЕМ ---
+  // --- ПРОСТОЙ СЛАЙДЕР БЕЗ БЕСКОНЕЧНОГО ЦИКЛА ---
   const initLoopSlider = (root) => {
     const wrapper = q(".swiper-wrapper", root);
-    let slides = qa(".swiper-slide", root);
+    const slides = qa(".swiper-slide", root);
     if (!wrapper || slides.length <= 1) return;
 
-    // клоны для визуального бесконечного цикла
-    const firstClone = slides[0].cloneNode(true);
-    const lastClone = slides[slides.length - 1].cloneNode(true);
-    wrapper.insertBefore(lastClone, slides[0]);
-    wrapper.appendChild(firstClone);
-
-    slides = qa(".swiper-slide", root);
-
-    let index = 1; // начинаем с первого «настоящего» слайда
     let offsets = [];
+    let maxTranslate = 0;
+    let currentTranslate = 0;
     let isAnimating = false;
+    const nextBtn = q(".swiper-button-next", root);
+    const prevBtn = q(".swiper-button-prev", root);
+
+    const applyTranslate = (value, withAnimation = true) => {
+      const clamped = Math.max(0, Math.min(value, maxTranslate));
+      currentTranslate = clamped;
+      wrapper.style.transition = withAnimation ? "transform 0.4s ease" : "none";
+      wrapper.style.transform = `translateX(${-currentTranslate}px)`;
+    };
 
     const recalc = () => {
       if (!slides.length) return;
       offsets = slides.map((slide) => slide.offsetLeft);
-      wrapper.style.transition = "none";
-      wrapper.style.transform = `translateX(${-offsets[index]}px)`;
+      maxTranslate = Math.max(0, wrapper.scrollWidth - root.clientWidth);
+      applyTranslate(currentTranslate, false);
       // форсим перерисовку
       void wrapper.offsetHeight;
       wrapper.style.transition = "transform 0.4s ease";
+      updateButtons();
     };
 
-    const goTo = (i) => {
-      if (!offsets.length || isAnimating) return;
+    const updateButtons = () => {
+      if (prevBtn) prevBtn.classList.toggle("swiper-button-disabled", currentTranslate <= 0);
+      if (nextBtn) nextBtn.classList.toggle("swiper-button-disabled", currentTranslate >= maxTranslate);
+    };
+
+    const goToTranslate = (nextTranslate) => {
+      if (isAnimating) return;
+      const clamped = Math.max(0, Math.min(nextTranslate, maxTranslate));
+      if (Math.abs(clamped - currentTranslate) < 1) return;
       isAnimating = true;
-      index = i;
-      wrapper.style.transition = "transform 0.4s ease";
-      wrapper.style.transform = `translateX(${-offsets[index]}px)`;
+      applyTranslate(clamped, true);
     };
 
-    const shiftToRealSlide = () => {
-      if (!offsets.length) return;
-      if (index === 0) {
-        index = slides.length - 2;
-        wrapper.style.transition = "none";
-        wrapper.style.transform = `translateX(${-offsets[index]}px)`;
-      } else if (index === slides.length - 1) {
-        index = 1;
-        wrapper.style.transition = "none";
-        wrapper.style.transform = `translateX(${-offsets[index]}px)`;
+    const getNextTranslate = () => {
+      const target = offsets.find((v) => v > currentTranslate + 1);
+      return target !== undefined ? target : maxTranslate;
+    };
+
+    const getPrevTranslate = () => {
+      for (let i = offsets.length - 1; i >= 0; i -= 1) {
+        if (offsets[i] < currentTranslate - 1) return offsets[i];
       }
+      return 0;
+    };
+
+    const onTransitionEnd = () => {
       isAnimating = false;
+      updateButtons();
     };
 
     recalc();
-
-    const nextBtn = q(".swiper-button-next", root);
-    const prevBtn = q(".swiper-button-prev", root);
 
     nextBtn &&
       nextBtn.addEventListener("click", (e) => {
         e.preventDefault();
         if (!offsets.length) recalc();
-        goTo(index + 1);
+        goToTranslate(getNextTranslate());
       });
     prevBtn &&
       prevBtn.addEventListener("click", (e) => {
         e.preventDefault();
         if (!offsets.length) recalc();
-        goTo(index - 1);
+        goToTranslate(getPrevTranslate());
       });
 
-    wrapper.addEventListener("transitionend", shiftToRealSlide);
+    wrapper.addEventListener("transitionend", onTransitionEnd);
     window.addEventListener("resize", recalc);
+    onTransitionEnd();
   };
 
   qa(".swiper.slider-home, .swiper.slider-hit, .swiper.slider-catalog, .swiper.slider-product, .swiper.reviews-slider, .swiper.slider-similar, .swiper.slider-like").forEach(

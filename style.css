@@ -74,6 +74,17 @@
 .swiper-slide {
 	flex-shrink:0;
 }
+.slider-hit .swiper-wrapper,
+.slider-catalog .swiper-wrapper,
+.slider-product .swiper-wrapper,
+.reviews-slider .swiper-wrapper,
+.slider-similar .swiper-wrapper,
+.slider-like .swiper-wrapper {
+	gap:8px;
+}
+.swiper-slide .catalog-item {
+	height:100%;
+}
 .swiper-nav {
 	position:absolute;
 	left:0;
