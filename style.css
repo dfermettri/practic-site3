@@ -1288,6 +1288,10 @@ section {
 .read-more:hover:after {
 	background:var(--grey);
 }
+.catalog-item {
+	width:444px;
+	height:732px;
+}
 .catalog-item__img-box {
 	position:relative;
 }

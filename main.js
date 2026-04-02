@@ -155,4 +155,35 @@ document.addEventListener("DOMContentLoaded", () => {
   qa(".swiper.slider-home, .swiper.slider-hit, .swiper.slider-catalog, .swiper.slider-product, .swiper.reviews-slider, .swiper.slider-similar, .swiper.slider-like").forEach(
     (root) => initLoopSlider(root)
   );
+
+  // --- МОБИЛЬНАЯ ГАЛЕРЕЯ ТОВАРА ---
+  const initProductGallery = () => {
+    const gallery = document.querySelector(".product-gallery");
+    if (!gallery) return;
+
+    const items = Array.from(gallery.querySelectorAll(".product-gallery__item"));
+    if (items.length <= 1) return;
+
+    // Убираем active у всех и ставим на первую
+    items.forEach((item) => item.classList.remove("active"));
+    items[0].classList.add("active");
+
+    let currentIndex = 0;
+
+    const showItem = (index) => {
+      items.forEach((item, i) => {
+        item.classList.toggle("active", i === index);
+      });
+    };
+
+    items.forEach((item, index) => {
+      item.addEventListener("click", (e) => {
+        e.stopPropagation();
+        currentIndex = (index + 1) % items.length;
+        showItem(currentIndex);
+      });
+    });
+  };
+
+  initProductGallery();
 });
