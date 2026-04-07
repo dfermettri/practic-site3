@@ -170,9 +170,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let currentIndex = 0;
 
+    // Создаем сегменты
+    const segmentsContainer = document.createElement("div");
+    segmentsContainer.className = "product-gallery__segments";
+    items.forEach((_, index) => {
+      const segment = document.createElement("div");
+      segment.className = `product-gallery__segment${index === 0 ? " active" : ""}`;
+      segment.addEventListener("click", () => {
+        currentIndex = index;
+        showItem(currentIndex);
+      });
+      segmentsContainer.appendChild(segment);
+    });
+    gallery.parentNode.insertBefore(segmentsContainer, gallery.nextSibling);
+
     const showItem = (index) => {
       items.forEach((item, i) => {
         item.classList.toggle("active", i === index);
+      });
+      // Обновляем сегменты
+      const segments = Array.from(segmentsContainer.querySelectorAll(".product-gallery__segment"));
+      segments.forEach((seg, i) => {
+        seg.classList.toggle("active", i === index);
       });
     };
 

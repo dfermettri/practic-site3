@@ -2868,6 +2868,12 @@ input[type=number] {
 	width:20px;
 	height:20px;
 }
+.item-components {
+	display:none;
+}
+.item-component-right {
+	display:none;
+}
 .gallery-info {
 	position:sticky;
 	margin:-58px 22px 22px;
