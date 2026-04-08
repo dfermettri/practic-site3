@@ -2874,6 +2874,15 @@ input[type=number] {
 .item-component-right {
 	display:none;
 }
+.item-components-tooltip {
+	display:none;
+}
+.item-components-tooltip-overlay {
+	display:none;
+}
+.sticky-bottom-bar {
+	display:none;
+}
 .gallery-info {
 	position:sticky;
 	margin:-58px 22px 22px;

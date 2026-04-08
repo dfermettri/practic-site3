@@ -205,4 +205,74 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   initProductGallery();
+
+  // --- ШТОРКА ITEM-COMPONENTS ---
+  const itemComponents = document.querySelector(".item-components");
+  const tooltip = document.querySelector(".item-components-tooltip");
+  const overlay = document.querySelector(".item-components-tooltip-overlay");
+  if (itemComponents && tooltip && overlay) {
+    const openTooltip = () => {
+      tooltip.classList.add("active");
+      overlay.classList.add("active");
+    };
+    const closeTooltip = () => {
+      tooltip.classList.remove("active");
+      overlay.classList.remove("active");
+    };
+
+    itemComponents.addEventListener("click", (e) => {
+      e.stopPropagation();
+      openTooltip();
+    });
+
+    tooltip.querySelector(".item-components-tooltip__close")?.addEventListener("click", (e) => {
+      e.stopPropagation();
+      closeTooltip();
+    });
+
+    overlay.addEventListener("click", closeTooltip);
+
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest(".item-components-tooltip") && !e.target.closest(".item-components")) {
+        closeTooltip();
+      }
+    });
+  }
+
+  // --- STICKY BOTTOM BAR ---
+  const stickyBar = document.querySelector(".sticky-bottom-bar");
+  const tabber = document.querySelector(".tabber-menu__box");
+  const header = document.querySelector(".page-header");
+  if (stickyBar) {
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+          // Sticky bar
+          if (currentScrollY > 400) {
+            stickyBar.classList.add("active");
+            tabber?.classList.add("above-bar");
+          } else {
+            stickyBar.classList.remove("active");
+            tabber?.classList.remove("above-bar");
+          }
+          // Scroll direction
+          if (currentScrollY > lastScrollY && currentScrollY > 100) {
+            // Scrolling down
+            tabber?.classList.add("hidden");
+            header?.classList.add("hidden");
+          } else {
+            // Scrolling up
+            tabber?.classList.remove("hidden");
+            header?.classList.remove("hidden");
+          }
+          lastScrollY = currentScrollY;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  }
 });
