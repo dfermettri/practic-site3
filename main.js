@@ -253,20 +253,23 @@ document.addEventListener("DOMContentLoaded", () => {
           // Sticky bar
           if (currentScrollY > 400) {
             stickyBar.classList.add("active");
-            tabber?.classList.add("above-bar");
           } else {
             stickyBar.classList.remove("active");
-            tabber?.classList.remove("above-bar");
+            stickyBar.classList.remove("above-tabber");
           }
           // Scroll direction
           if (currentScrollY > lastScrollY && currentScrollY > 100) {
             // Scrolling down
             tabber?.classList.add("hidden");
             header?.classList.add("hidden");
+            stickyBar.classList.remove("above-tabber");
           } else {
             // Scrolling up
             tabber?.classList.remove("hidden");
             header?.classList.remove("hidden");
+            if (stickyBar.classList.contains("active")) {
+              stickyBar.classList.add("above-tabber");
+            }
           }
           lastScrollY = currentScrollY;
           ticking = false;
