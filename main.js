@@ -208,8 +208,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // --- ШТОРКА ITEM-COMPONENTS ---
   const itemComponents = document.querySelector(".item-components");
+  const itemComponentRight = document.querySelector(".item-component-right");
   const tooltip = document.querySelector(".item-components-tooltip");
   const overlay = document.querySelector(".item-components-tooltip-overlay");
+  const hitSection = document.querySelector("#hit");
   if (itemComponents && tooltip && overlay) {
     const openTooltip = () => {
       tooltip.classList.add("active");
@@ -236,6 +238,13 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!e.target.closest(".item-components-tooltip") && !e.target.closest(".item-components")) {
         closeTooltip();
       }
+    });
+  }
+
+  if (itemComponentRight && hitSection) {
+    itemComponentRight.addEventListener("click", (e) => {
+      e.preventDefault();
+      hitSection.scrollIntoView({ behavior: "smooth", block: "center" });
     });
   }
 

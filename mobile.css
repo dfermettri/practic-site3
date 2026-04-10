@@ -1375,6 +1375,12 @@ body:has(.page-header) main {
 	margin-right: 0 !important;
 	padding-right: 0 !important;
 }
+.slider-product__box h2 {
+	padding-left: 16px !important;
+}
+.slider-product .catalog-item__txt-box {
+	padding-left: 16px !important;
+}
 .slider-product .swiper-slide {
 	width: 175px !important;
 	max-width: 175px !important;
