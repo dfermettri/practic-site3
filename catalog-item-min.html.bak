@@ -26,14 +26,14 @@
 </head>
 <body>
 	<!--Menu Phone-->
-	<div id="menu-phone" class="popup" role="dialog" aria-modal="true">
+	<div id="menu-phone" class="popup">
 		<div class="flex popup-big__box">
 			<div class="flex popup-content">
 				<div class="popup-header flex">
 					<h3>Меню</h3>
 					<div class="popup-btns flex">
-						<a href="javascript:void(0)" aria-label="Поиск"><i class="icon search-icon"></i></a>
-						<button class="menu-btn" type="button"><span></span><span></span><span></span></button>
+						<a href="javascript:void(0)"><i class="icon search-icon"></i></a>
+						<button class="menu-btn"><span></span><span></span><span></span></button>
 					</div>
 				</div>
 				
@@ -84,7 +84,7 @@
 							<span>Ежедневно с 9:00 до 21:00</span>
 							<span>Звонок по России бесплатный</span>
 						</div>
-						<a href="mailto:info@lassie.ru" aria-label="Написать на info@lassie.ru" class="email-link">info@lassie.ru</a>
+						<a href="mailto:info@lassie.ru" class="email-link">info@lassie.ru</a>
 						<div class="soc-list flex">
 							<a href="javascript:void(0)"><i class="icon telegram-icon"></i></a>
 							<a href="javascript:void(0)"><i class="icon vk-icon"></i></a>
@@ -95,8 +95,8 @@
 						</div>
 
 						<div class="flex ph app-download__links">
-							<a href="javascript:void(0)" target="_blank" rel="noopener noreferrer"><img src="img/download-google.svg" alt="Google Play" loading="lazy" /></a>
-							<a href="javascript:void(0)" target="_blank" rel="noopener noreferrer"><img src="img/download-app.svg" alt="App Store" loading="lazy" /></a>
+							<a href="javascript:void(0)" target="_blank"><img src="img/download-google.svg" alt="Google Play" loading="lazy" /></a>
+							<a href="javascript:void(0)" target="_blank"><img src="img/download-app.svg" alt="App Store" loading="lazy" /></a>
 						</div>
 					</div>
 				</div>
@@ -105,14 +105,14 @@
 	</div>
 	<!--/Menu Phone-->
 	<!--Menu Catalog-->
-	<div id="catalog-menu" class="popup" role="dialog" aria-modal="true">
+	<div id="catalog-menu" class="popup">
 		<div class="flex popup-big__box">
 			<div class="flex popup-content">
 				<div class="popup-header flex">
 					<h3>Каталог</h3>
 					<div class="popup-btns flex">
-						<a href="javascript:void(0)" aria-label="Поиск"><i class="icon search-icon"></i></a>
-						<button class="close" type="button"><span></span><span></span></button>
+						<a href="javascript:void(0)"><i class="icon search-icon"></i></a>
+						<button class="close"><span></span><span></span></button>
 					</div>
 				</div>
 				
@@ -217,12 +217,12 @@
 		<div id="city" class="popup" data-message>
 			<div class="popup-container">
 				<div class="popup-box">
-					<div class="close"><button type="button" aria-label="Закрыть"><i class="icon delete-icon"></i></button></div>
+					<div class="close"><button><i class="icon delete-icon"></i></button></div>
 					<h4>Ваш город — <span>Петропавловск-камчатский</span>?</h4>
 					От города зависит стоимость и время доставки
 					<div class="flex">
-						<button class="btn" type="button" data-close>Да, верно</button>
-						<button class="btn btn-border" type="button" data-popup data-link="city-select" data-bg data-animation>Нет, изменить</button>
+						<button class="btn" data-close>Да, верно</button>
+						<button class="btn btn-border" data-popup data-link="city-select" data-bg data-animation>Нет, изменить</button>
 					</div>
 				</div>
 			</div>
@@ -265,16 +265,16 @@
 							<div class="app-download__txt">
 								<h4>Отсканируйте с помощью телефона</h4>
 								<input value="https://123456.redirect.app" id="app-link" />
-								<button id="app-btn" type="button">Скопировать ссылку</button>
+								<button id="app-btn">Скопировать ссылку</button>
 							</div>
 						</div>
 					</div>
-					<button class="btn pc" id="app-download" type="button">Установить</button>
+					<button class="btn pc" id="app-download">Установить</button>
 				</div>
-				<button class="btn ph" type="button">Открыть</button>
+				<button class="btn ph">Открыть</button>
 			</div>
 		
-			<div class="close"><button type="button" aria-label="Закрыть"><i class="icon close-icon"></i></button></div>
+			<div class="close"><button><i class="icon close-icon"></i></button></div>
 		</div>
 	</div>-->
 	<!--/App Banner-->
@@ -339,7 +339,7 @@
 		<div class="wrapper flex">
 			<!--Left Menu-->
 			<div class="flex header-menu__box">
-				<button class="menu-btn" type="button"><span></span><span></span><span></span></button>
+				<button class="menu-btn"><span></span><span></span><span></span></button>
 				<div class="menu-category__box flex">
 					<a href="javascript:void(0)" data-link="menu-girl">Девочкам</a>
 					<a href="javascript:void(0)" data-link="menu-boy">Мальчикам</a>
@@ -932,10 +932,10 @@
 			<!--/Logo-->
 			<!--Right Menu-->
 			<div class="flex header-menu__links">
-				<a href="#" aria-label="Поиск"><i class="icon search-icon"></i></a>
-				<a href="#" aria-label="Профиль"><i class="icon user-icon"></i></a>
-				<a href="#" aria-label="В избранное"><i class="icon like-icon"></i></a>
-				<a href="#" aria-label="Корзина" data-popup data-animation="right" data-bg data-link="basket"><i class="icon basket-icon"></i></a>
+				<a href="#"><i class="icon search-icon"></i></a>
+				<a href="#"><i class="icon user-icon"></i></a>
+				<a href="#"><i class="icon like-icon"></i></a>
+				<a href="#" data-popup data-animation="right" data-bg data-link="basket"><i class="icon basket-icon"></i></a>
 			</div>
 			<!--/Right Menu-->
 		</div>
@@ -984,7 +984,7 @@
 				<div class="item-components-tooltip-overlay"></div>
 				<div class="item-components-tooltip">
 					<div class="item-components-tooltip__txt">Ветронепроницаемый материал</div>
-					<button class="item-components-tooltip__close" type="button" aria-label="Закрыть"><i class="icon close-icon"></i></button>
+					<button class="item-components-tooltip__close"><i class="icon close-icon"></i></button>
 				</div>
 				<!--/Item Components Tooltip-->
 				<!--Info-->
@@ -992,7 +992,7 @@
 					<div class="product-info__title flex">
 						<h1>Зимние брюки Lassie Otra Розовые мембрана 10 000</h1>
 						<div class="product-share__box">
-							<button class="product-share" type="button" aria-label="Поделиться"><i class="icon share-icon"></i></button>
+							<button class="product-share"><i class="icon share-icon"></i></button>
 							<div class="product-share__list">
 							</div>
 						</div>
@@ -1014,23 +1014,23 @@
 					<div class="product-item__size">
 						<div class="product-item__size-title flex">
 							<div class="product-select__box">Выберите размер:<span>52</span></div>
-							<a href="#" class="table-size" target="_blank" rel="noopener noreferrer" data-popup data-animation="right" data-bg data-link="table-size"><i class="icon size-icon"></i>Таблица размеров</a>
+							<a href="#" class="table-size" target="_blank" data-popup data-animation="right" data-bg data-link="table-size"><i class="icon size-icon"></i>Таблица размеров</a>
 						</div>
 						<div class="add-size__box grid col-6">
-							<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">48</button>
-							<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">50</button>
-							<button class="btn btn-border active" aria-pressed="true" data-popup data-animation="down" data-bg data-link="add-item">52</button>
-							<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">54</button>
+							<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">48</button>
+							<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">50</button>
+							<button class="btn btn-border active" data-popup data-animation="down" data-bg data-link="add-item">52</button>
+							<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">54</button>
 						</div>
 					</div>
 					<div class="product-item__add-btn flex">
-						<div class="catalog-item__add-box"><button class="btn" type="button" data-popup data-animation="down" data-bg data-link="add-item">Добавить в корзину</button></div>
-						<div class="catalog-item__like-box"><button class="btn btn-border" type="button" aria-label="В избранное"><i class="icon like-icon"></i></button></div>
+						<div class="catalog-item__add-box"><button class="btn" data-popup data-animation="down" data-bg data-link="add-item">Добавить в корзину</button></div>
+						<div class="catalog-item__like-box"><button class="btn btn-border"><i class="icon like-icon"></i></button></div>
 					</div>
 					<div class="product-item__links">
-						<div class="product-item__link flex"><button class="btn btn-white" type="button" data-popup data-animation="right" data-bg data-link="description">Описание и характеристики</button></div>
-						<div class="product-item__link flex"><button class="btn btn-white" type="button" data-popup data-animation="right" data-bg data-link="delivery">Доставка</button></div>
-						<div class="product-item__link flex"><button class="btn btn-white" type="button" data-popup data-animation="right" data-bg data-link="care">Состав и уход</button></div>
+						<div class="product-item__link flex"><button class="btn btn-white" data-popup data-animation="right" data-bg data-link="description">Описание и характеристики</button></div>
+						<div class="product-item__link flex"><button class="btn btn-white" data-popup data-animation="right" data-bg data-link="delivery">Доставка</button></div>
+						<div class="product-item__link flex"><button class="btn btn-white" data-popup data-animation="right" data-bg data-link="care">Состав и уход</button></div>
 					</div>
 				</div>
 				<!--/Info-->
@@ -1042,8 +1042,8 @@
 					3499<span class="rub">₽</span>
 				</div>
 				<div class="sticky-bottom-bar__btns">
-					<button class="sticky-bottom-bar__cart-btn" type="button">В КОРЗИНУ</button>
-					<button class="sticky-bottom-bar__like-btn" type="button" aria-label="В избранное"><i class="icon like-icon"></i></button>
+					<button class="sticky-bottom-bar__cart-btn">В КОРЗИНУ</button>
+					<button class="sticky-bottom-bar__like-btn"><i class="icon like-icon"></i></button>
 				</div>
 			</div>
 			<!--/Sticky Bottom Bar-->
@@ -1131,8 +1131,8 @@
 								<!--/Item-->
 							</div>
 							<div class="swiper-nav">
-								<div class="swiper-button-prev" role="button" tabindex="0" aria-label="Предыдущий"></div>
-								<div class="swiper-button-next" role="button" tabindex="0" aria-label="Следующий"></div>
+								<div class="swiper-button-prev"></div>
+								<div class="swiper-button-next"></div>
 							</div>
 						</div>
 					</div>
@@ -1155,27 +1155,27 @@
 						<div class="catalog-item">
 							<div class="catalog-item__img-box">
 								<div class="label">Хит</div>
-								<div class="catalog-item__like-box"><button class="action-btn" type="button"><i class="icon like-icon"></i></button></div>
+								<div class="catalog-item__like-box"><button class="action-btn"><i class="icon like-icon"></i></button></div>
 								
 								<div class="catalog-item__basket-box flex">
 									<div class="catalog-item__icons-list flex">
 									</div>
-									<button class="action-btn" type="button"><i class="icon basket-icon"></i></button>
+									<button class="action-btn"><i class="icon basket-icon"></i></button>
 									<div class="add-size">
-										<div class="close" role="button" tabindex="0" aria-label="Закрыть"><i class="icon delete-icon"></i></div>
+										<div class="close"><i class="icon delete-icon"></i></div>
 										<h4>Выберите размер</h4>
 										<div class="add-size__box grid col-4">
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">29</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">30</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">31</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">32</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">33</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">34</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">35</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">36</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">37</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">38</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">39</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">29</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">30</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">31</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">32</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">33</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">34</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">35</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">36</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">37</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">38</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">39</button>
 										</div>
 									</div>
 								</div>
@@ -1210,27 +1210,27 @@
 						<div class="catalog-item">
 							<div class="catalog-item__img-box">
 								<div class="label">-50%</div>
-								<div class="catalog-item__like-box"><button class="action-btn" type="button"><i class="icon like-icon"></i></button></div>
+								<div class="catalog-item__like-box"><button class="action-btn"><i class="icon like-icon"></i></button></div>
 								
 								<div class="catalog-item__basket-box flex">
 									<div class="catalog-item__icons-list flex">
 									</div>
-									<button class="action-btn" type="button"><i class="icon basket-icon"></i></button>
+									<button class="action-btn"><i class="icon basket-icon"></i></button>
 									<div class="add-size">
-										<div class="close" role="button" tabindex="0" aria-label="Закрыть"><i class="icon delete-icon"></i></div>
+										<div class="close"><i class="icon delete-icon"></i></div>
 										<h4>Выберите размер</h4>
 										<div class="add-size__box grid col-4">
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">29</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">30</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">31</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">32</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">33</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">34</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">35</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">36</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">37</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">38</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">39</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">29</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">30</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">31</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">32</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">33</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">34</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">35</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">36</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">37</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">38</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">39</button>
 										</div>
 									</div>
 								</div>
@@ -1265,27 +1265,27 @@
 					<div class="swiper-slide">
 						<div class="catalog-item">
 							<div class="catalog-item__img-box">
-								<div class="catalog-item__like-box"><button class="action-btn" type="button"><i class="icon like-icon"></i></button></div>
+								<div class="catalog-item__like-box"><button class="action-btn"><i class="icon like-icon"></i></button></div>
 								
 								<div class="catalog-item__basket-box flex">
 									<div class="catalog-item__icons-list flex">
 									</div>
-									<button class="action-btn" type="button"><i class="icon basket-icon"></i></button>
+									<button class="action-btn"><i class="icon basket-icon"></i></button>
 									<div class="add-size">
-										<div class="close" role="button" tabindex="0" aria-label="Закрыть"><i class="icon delete-icon"></i></div>
+										<div class="close"><i class="icon delete-icon"></i></div>
 										<h4>Выберите размер</h4>
 										<div class="add-size__box grid col-4">
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">29</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">30</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">31</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">32</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">33</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">34</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">35</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">36</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">37</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">38</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">39</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">29</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">30</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">31</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">32</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">33</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">34</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">35</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">36</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">37</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">38</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">39</button>
 										</div>
 									</div>
 								</div>
@@ -1322,29 +1322,29 @@
 						<div class="catalog-item">
 							<div class="catalog-item__img-box">
 								<div class="label">до -25<i class="icon snow-icon"></i></div>
-								<div class="catalog-item__like-box"><button class="action-btn" type="button"><i class="icon like-icon"></i></button></div>
+								<div class="catalog-item__like-box"><button class="action-btn"><i class="icon like-icon"></i></button></div>
 								
 								<div class="catalog-item__basket-box flex">
 									<div class="catalog-item__icons-list flex">
 										<div class="catalog-item__icon tooltip" data-text="Ветронепроницаемый материал"><i class="icon catalog1"></i></div>
 										<div class="catalog-item__icon tooltip" data-text="Водонепроницаемость 10 000 мм"><i class="icon catalog2"></i></div>
 									</div>
-									<button class="action-btn" type="button"><i class="icon basket-icon"></i></button>
+									<button class="action-btn"><i class="icon basket-icon"></i></button>
 									<div class="add-size">
-										<div class="close" role="button" tabindex="0" aria-label="Закрыть"><i class="icon delete-icon"></i></div>
+										<div class="close"><i class="icon delete-icon"></i></div>
 										<h4>Выберите размер</h4>
 										<div class="add-size__box grid col-4">
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">29</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">30</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">31</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">32</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">33</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">34</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">35</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">36</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">37</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">38</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">39</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">29</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">30</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">31</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">32</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">33</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">34</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">35</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">36</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">37</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">38</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">39</button>
 										</div>
 									</div>
 								</div>
@@ -1376,8 +1376,8 @@
 					<!--/Item-->
 				</div>
 				<div class="swiper-nav">
-					<div class="swiper-button-prev" role="button" tabindex="0" aria-label="Предыдущий"></div>
-					<div class="swiper-button-next" role="button" tabindex="0" aria-label="Следующий"></div>
+					<div class="swiper-button-prev"></div>
+					<div class="swiper-button-next"></div>
 				</div>
 			</div>
 		</section>
@@ -1431,7 +1431,7 @@
         		<div class="reviews-empty__content">
             		<h4>Отзывов пока нет</h4>
             		<p>Поделитесь своим мнением о товаре — ваш отзыв поможет другим покупателям сделать выбор</p>
-            		<button class="btn" type="button" data-popup="review-form">Оставить отзыв</button>
+            		<button class="btn" data-popup="review-form">Оставить отзыв</button>
         		</div>
     		</div>
 			<!--/Empty-reviews-->
@@ -1450,29 +1450,29 @@
 						<div class="catalog-item">
 							<div class="catalog-item__img-box">
 								<div class="label">до -30<i class="icon snow-icon"></i></div>
-								<div class="catalog-item__like-box"><button class="action-btn" type="button"><i class="icon like-icon"></i></button></div>
+								<div class="catalog-item__like-box"><button class="action-btn"><i class="icon like-icon"></i></button></div>
 								
 								<div class="catalog-item__basket-box flex">
 									<div class="catalog-item__icons-list flex">
 										<div class="catalog-item__icon tooltip" data-text="Ветронепроницаемый материал"><i class="icon catalog1"></i></div>
 										<div class="catalog-item__icon tooltip" data-text="Водонепроницаемость 10 000 мм"><i class="icon catalog2"></i></div>
 									</div>
-									<button class="action-btn" type="button"><i class="icon basket-icon"></i></button>
+									<button class="action-btn"><i class="icon basket-icon"></i></button>
 									<div class="add-size">
-										<div class="close" role="button" tabindex="0" aria-label="Закрыть"><i class="icon delete-icon"></i></div>
+										<div class="close"><i class="icon delete-icon"></i></div>
 										<h4>Выберите размер</h4>
 										<div class="add-size__box grid col-4">
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">29</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">30</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">31</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">32</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">33</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">34</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">35</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">36</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">37</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">38</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">39</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">29</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">30</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">31</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">32</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">33</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">34</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">35</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">36</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">37</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">38</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">39</button>
 										</div>
 									</div>
 								</div>
@@ -1515,29 +1515,29 @@
 						<div class="catalog-item">
 							<div class="catalog-item__img-box">
 								<div class="label">до -25<i class="icon snow-icon"></i></div>
-								<div class="catalog-item__like-box"><button class="action-btn" type="button"><i class="icon like-icon"></i></button></div>
+								<div class="catalog-item__like-box"><button class="action-btn"><i class="icon like-icon"></i></button></div>
 								
 								<div class="catalog-item__basket-box flex">
 									<div class="catalog-item__icons-list flex">
 										<div class="catalog-item__icon tooltip" data-text="Ветронепроницаемый материал"><i class="icon catalog1"></i></div>
 										<div class="catalog-item__icon tooltip" data-text="Водонепроницаемость 10 000 мм"><i class="icon catalog2"></i></div>
 									</div>
-									<button class="action-btn" type="button"><i class="icon basket-icon"></i></button>
+									<button class="action-btn"><i class="icon basket-icon"></i></button>
 									<div class="add-size">
-										<div class="close" role="button" tabindex="0" aria-label="Закрыть"><i class="icon delete-icon"></i></div>
+										<div class="close"><i class="icon delete-icon"></i></div>
 										<h4>Выберите размер</h4>
 										<div class="add-size__box grid col-4">
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">29</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">30</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">31</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">32</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">33</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">34</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">35</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">36</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">37</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">38</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">39</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">29</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">30</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">31</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">32</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">33</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">34</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">35</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">36</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">37</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">38</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">39</button>
 										</div>
 									</div>
 								</div>
@@ -1576,29 +1576,29 @@
 						<div class="catalog-item">
 							<div class="catalog-item__img-box">
 								<div class="label">до -25<i class="icon snow-icon"></i></div>
-								<div class="catalog-item__like-box"><button class="action-btn" type="button"><i class="icon like-icon"></i></button></div>
+								<div class="catalog-item__like-box"><button class="action-btn"><i class="icon like-icon"></i></button></div>
 								
 								<div class="catalog-item__basket-box flex">
 									<div class="catalog-item__icons-list flex">
 										<div class="catalog-item__icon tooltip" data-text="Ветронепроницаемый материал"><i class="icon catalog1"></i></div>
 										<div class="catalog-item__icon tooltip" data-text="Водонепроницаемость 10 000 мм"><i class="icon catalog2"></i></div>
 									</div>
-									<button class="action-btn" type="button"><i class="icon basket-icon"></i></button>
+									<button class="action-btn"><i class="icon basket-icon"></i></button>
 									<div class="add-size">
-										<div class="close" role="button" tabindex="0" aria-label="Закрыть"><i class="icon delete-icon"></i></div>
+										<div class="close"><i class="icon delete-icon"></i></div>
 										<h4>Выберите размер</h4>
 										<div class="add-size__box grid col-4">
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">29</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">30</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">31</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">32</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">33</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">34</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">35</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">36</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">37</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">38</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">39</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">29</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">30</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">31</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">32</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">33</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">34</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">35</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">36</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">37</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">38</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">39</button>
 										</div>
 									</div>
 								</div>
@@ -1639,29 +1639,29 @@
 						<div class="catalog-item">
 							<div class="catalog-item__img-box">
 								<div class="label">до -25<i class="icon snow-icon"></i></div>
-								<div class="catalog-item__like-box"><button class="action-btn" type="button"><i class="icon like-icon"></i></button></div>
+								<div class="catalog-item__like-box"><button class="action-btn"><i class="icon like-icon"></i></button></div>
 								
 								<div class="catalog-item__basket-box flex">
 									<div class="catalog-item__icons-list flex">
 										<div class="catalog-item__icon tooltip" data-text="Ветронепроницаемый материал"><i class="icon catalog1"></i></div>
 										<div class="catalog-item__icon tooltip" data-text="Водонепроницаемость 10 000 мм"><i class="icon catalog2"></i></div>
 									</div>
-									<button class="action-btn" type="button"><i class="icon basket-icon"></i></button>
+									<button class="action-btn"><i class="icon basket-icon"></i></button>
 									<div class="add-size">
-										<div class="close" role="button" tabindex="0" aria-label="Закрыть"><i class="icon delete-icon"></i></div>
+										<div class="close"><i class="icon delete-icon"></i></div>
 										<h4>Выберите размер</h4>
 										<div class="add-size__box grid col-4">
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">29</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">30</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">31</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">32</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">33</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">34</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">35</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">36</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">37</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">38</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">39</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">29</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">30</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">31</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">32</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">33</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">34</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">35</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">36</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">37</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">38</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">39</button>
 										</div>
 									</div>
 								</div>
@@ -1697,8 +1697,8 @@
 					<!--/Item-->
 				</div>
 				<div class="swiper-nav">
-					<div class="swiper-button-prev" role="button" tabindex="0" aria-label="Предыдущий"></div>
-					<div class="swiper-button-next" role="button" tabindex="0" aria-label="Следующий"></div>
+					<div class="swiper-button-prev"></div>
+					<div class="swiper-button-next"></div>
 				</div>
 			</div>
 		</section>
@@ -1715,29 +1715,29 @@
 						<div class="catalog-item">
 							<div class="catalog-item__img-box">
 								<div class="label">до -25<i class="icon snow-icon"></i></div>
-								<div class="catalog-item__like-box"><button class="action-btn" type="button"><i class="icon like-icon"></i></button></div>
+								<div class="catalog-item__like-box"><button class="action-btn"><i class="icon like-icon"></i></button></div>
 								
 								<div class="catalog-item__basket-box flex">
 									<div class="catalog-item__icons-list flex">
 										<div class="catalog-item__icon tooltip" data-text="Ветронепроницаемый материал"><i class="icon catalog1"></i></div>
 										<div class="catalog-item__icon tooltip" data-text="Водонепроницаемость 10 000 мм"><i class="icon catalog2"></i></div>
 									</div>
-									<button class="action-btn" type="button"><i class="icon basket-icon"></i></button>
+									<button class="action-btn"><i class="icon basket-icon"></i></button>
 									<div class="add-size">
-										<div class="close" role="button" tabindex="0" aria-label="Закрыть"><i class="icon delete-icon"></i></div>
+										<div class="close"><i class="icon delete-icon"></i></div>
 										<h4>Выберите размер</h4>
 										<div class="add-size__box grid col-4">
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">29</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">30</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">31</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">32</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">33</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">34</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">35</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">36</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">37</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">38</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">39</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">29</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">30</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">31</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">32</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">33</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">34</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">35</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">36</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">37</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">38</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">39</button>
 										</div>
 									</div>
 								</div>
@@ -1776,29 +1776,29 @@
 						<div class="catalog-item">
 							<div class="catalog-item__img-box">
 								<div class="label">до -30<i class="icon snow-icon"></i></div>
-								<div class="catalog-item__like-box"><button class="action-btn" type="button"><i class="icon like-icon"></i></button></div>
+								<div class="catalog-item__like-box"><button class="action-btn"><i class="icon like-icon"></i></button></div>
 								
 								<div class="catalog-item__basket-box flex">
 									<div class="catalog-item__icons-list flex">
 										<div class="catalog-item__icon tooltip" data-text="Ветронепроницаемый материал"><i class="icon catalog1"></i></div>
 										<div class="catalog-item__icon tooltip" data-text="Водонепроницаемость 10 000 мм"><i class="icon catalog2"></i></div>
 									</div>
-									<button class="action-btn" type="button"><i class="icon basket-icon"></i></button>
+									<button class="action-btn"><i class="icon basket-icon"></i></button>
 									<div class="add-size">
-										<div class="close" role="button" tabindex="0" aria-label="Закрыть"><i class="icon delete-icon"></i></div>
+										<div class="close"><i class="icon delete-icon"></i></div>
 										<h4>Выберите размер</h4>
 										<div class="add-size__box grid col-4">
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">29</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">30</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">31</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">32</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">33</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">34</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">35</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">36</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">37</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">38</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">39</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">29</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">30</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">31</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">32</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">33</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">34</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">35</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">36</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">37</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">38</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">39</button>
 										</div>
 									</div>
 								</div>
@@ -1841,29 +1841,29 @@
 						<div class="catalog-item">
 							<div class="catalog-item__img-box">
 								<div class="label">до -25<i class="icon snow-icon"></i></div>
-								<div class="catalog-item__like-box"><button class="action-btn" type="button"><i class="icon like-icon"></i></button></div>
+								<div class="catalog-item__like-box"><button class="action-btn"><i class="icon like-icon"></i></button></div>
 								
 								<div class="catalog-item__basket-box flex">
 									<div class="catalog-item__icons-list flex">
 										<div class="catalog-item__icon tooltip" data-text="Ветронепроницаемый материал"><i class="icon catalog1"></i></div>
 										<div class="catalog-item__icon tooltip" data-text="Водонепроницаемость 10 000 мм"><i class="icon catalog2"></i></div>
 									</div>
-									<button class="action-btn" type="button"><i class="icon basket-icon"></i></button>
+									<button class="action-btn"><i class="icon basket-icon"></i></button>
 									<div class="add-size">
-										<div class="close" role="button" tabindex="0" aria-label="Закрыть"><i class="icon delete-icon"></i></div>
+										<div class="close"><i class="icon delete-icon"></i></div>
 										<h4>Выберите размер</h4>
 										<div class="add-size__box grid col-4">
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">29</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">30</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">31</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">32</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">33</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">34</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">35</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">36</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">37</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">38</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">39</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">29</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">30</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">31</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">32</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">33</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">34</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">35</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">36</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">37</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">38</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">39</button>
 										</div>
 									</div>
 								</div>
@@ -1902,29 +1902,29 @@
 						<div class="catalog-item">
 							<div class="catalog-item__img-box">
 								<div class="label">до -25<i class="icon snow-icon"></i></div>
-								<div class="catalog-item__like-box"><button class="action-btn" type="button"><i class="icon like-icon"></i></button></div>
+								<div class="catalog-item__like-box"><button class="action-btn"><i class="icon like-icon"></i></button></div>
 								
 								<div class="catalog-item__basket-box flex">
 									<div class="catalog-item__icons-list flex">
 										<div class="catalog-item__icon tooltip" data-text="Ветронепроницаемый материал"><i class="icon catalog1"></i></div>
 										<div class="catalog-item__icon tooltip" data-text="Водонепроницаемость 10 000 мм"><i class="icon catalog2"></i></div>
 									</div>
-									<button class="action-btn" type="button"><i class="icon basket-icon"></i></button>
+									<button class="action-btn"><i class="icon basket-icon"></i></button>
 									<div class="add-size">
-										<div class="close" role="button" tabindex="0" aria-label="Закрыть"><i class="icon delete-icon"></i></div>
+										<div class="close"><i class="icon delete-icon"></i></div>
 										<h4>Выберите размер</h4>
 										<div class="add-size__box grid col-4">
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">29</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">30</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">31</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">32</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">33</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">34</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">35</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">36</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">37</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">38</button>
-											<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">39</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">29</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">30</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">31</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">32</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">33</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">34</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">35</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">36</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">37</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">38</button>
+											<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">39</button>
 										</div>
 									</div>
 								</div>
@@ -1962,8 +1962,8 @@
 					<!--/Item-->
 				</div>
 				<div class="swiper-nav">
-					<div class="swiper-button-prev" role="button" tabindex="0" aria-label="Предыдущий"></div>
-					<div class="swiper-button-next" role="button" tabindex="0" aria-label="Следующий"></div>
+					<div class="swiper-button-prev"></div>
+					<div class="swiper-button-next"></div>
 				</div>
 			</div>
 		</section>
@@ -1978,15 +1978,15 @@
 						<form id="subscribe-form">
 							<div class="flex input-container">
 								<div class="input-box">
-									<button class="delete-btn" type="button" aria-label="Удалить"><i class="icon delete-icon"></i></button>
+									<button class="delete-btn"><i class="icon delete-icon"></i></button>
 									<input id="email" type="text" value="" placeholder="Введите email" />
 									<span class="error-txt"></span>
 								</div>
-								<button class="btn btn-border-white" type="submit">Подписаться</button>
+								<button class="btn btn-border-white">Подписаться</button>
 							</div>
 							<div class="legal-box flex">
 								<input type="checkbox" checked id="check" />
-								<label for="check">Даю согласие на получение информационной рассылки и <a href="#" target="_blank" rel="noopener noreferrer">обработку персональных данных</a></label>
+								<label for="check">Даю согласие на получение информационной рассылки и <a href="#" target="_blank">обработку персональных данных</a></label>
 							</div>
 						</form>
 					</div>
@@ -2013,7 +2013,7 @@
 								<span>Ежедневно с 9:00 до 21:00</span>
 								<span>Звонок по России бесплатный</span>
 							</div>
-							<a href="mailto:info@lassie.ru" aria-label="Написать на info@lassie.ru" class="email-link">info@lassie.ru</a>
+							<a href="mailto:info@lassie.ru" class="email-link">info@lassie.ru</a>
 							<div class="soc-list flex">
 								<a href="#"><i class="icon telegram-icon"></i></a>
 								<a href="#"><i class="icon vk-icon"></i></a>
@@ -2081,8 +2081,8 @@
 						</div>
 						
 						<div class="flex ph app-download__links">
-							<a href="#" target="_blank" rel="noopener noreferrer"><img src="img/download-google.svg" alt="Google Play" loading="lazy" /></a>
-							<a href="#" target="_blank" rel="noopener noreferrer"><img src="img/download-app.svg" alt="App Store" loading="lazy" /></a>
+							<a href="#" target="_blank"><img src="img/download-google.svg" alt="Google Play" loading="lazy" /></a>
+							<a href="#" target="_blank"><img src="img/download-app.svg" alt="App Store" loading="lazy" /></a>
 						</div>
 						
 						<div class="flex ph cards-list">
@@ -2109,7 +2109,7 @@
 	<!--/Footer-->
 	<!--Tooltip-->
 	<div id="tooltip">
-		<div class="close" role="button" tabindex="0" aria-label="Закрыть"><i class="icon delete-icon"></i></div>
+		<div class="close"><i class="icon delete-icon"></i></div>
 		<span></span>
 	</div>
 	<div class="tooltip-bg"></div>
@@ -2118,13 +2118,13 @@
 	<div id="info-message">
 		<div class="flex">		
 			<span></span>
-			<div class="close-box" role="button" tabindex="0" aria-label="Закрыть"><i class="icon delete-icon"></i></div>
+			<div class="close-box"><i class="icon delete-icon"></i></div>
 		</div>
 	</div>
 	<!--/Message-->
 	<!--Add item-->
-	<div id="add-item" class="popup popup-down" role="dialog" aria-modal="true">
-		<div class="close"><button type="button" aria-label="Закрыть"><i class="icon delete-icon"></i></button></div>
+	<div id="add-item" class="popup popup-down">
+		<div class="close"><button><i class="icon delete-icon"></i></button></div>
 		<div class="flex popup-content">
 			<div class="popup-header">
 				<h3>Товар добавлен в корзину</h3>
@@ -2156,8 +2156,8 @@
 										</div>
 									</div>
 									<div class="basket-item__actions flex">
-										<div class="catalog-item__like-box"><button class="action-btn" type="button"><i class="icon like-icon"></i></button></div>
-										<div class="catalog-item__delete-box"><button class="action-btn" type="button"><i class="icon remove-icon"></i></button></div>
+										<div class="catalog-item__like-box"><button class="action-btn"><i class="icon like-icon"></i></button></div>
+										<div class="catalog-item__delete-box"><button class="action-btn"><i class="icon remove-icon"></i></button></div>
 									</div>
 								</div>
 							</div>
@@ -2174,8 +2174,8 @@
 	</div>
 	<!--/Add item-->
 	<!--Basket-->
-	<div id="basket" class="popup" role="dialog" aria-modal="true">
-		<div class="close"><button type="button" aria-label="Закрыть"><i class="icon delete-icon"></i></button></div>
+	<div id="basket" class="popup">
+		<div class="close"><button><i class="icon delete-icon"></i></button></div>
 		<div class="flex popup-content">
 			<div class="popup-header">
 				<h3>корзина</h3>
@@ -2193,15 +2193,15 @@
 	</div>
 	<!--/Basket-->
 	<!--City Box-->
-	<div id="city-select" class="popup" role="dialog" aria-modal="true">
-		<div class="close"><button type="button" aria-label="Закрыть"><i class="icon delete-icon"></i></button></div>
+	<div id="city-select" class="popup">
+		<div class="close"><button><i class="icon delete-icon"></i></button></div>
 		<div class="flex popup-content">
 			<div class="popup-header">
 				<h3>Выбор города</h3>
 				<div class="popup-txt__box">От города зависит стоимость и время доставки</div>
 				<div class="city-form">
 					<div class="input-box">	
-						<button class="search-btn" type="button" aria-label="Поиск"></button>
+						<button class="search-btn"></button>
 						<input type="text" value="" id="city-search" placeholder="Введите название города" />
 					</div>
 				</div>
@@ -2238,8 +2238,8 @@
 	</div>
 	<!--/City Box-->
 	<!--Subscribe-->
-	<div id="subscribe-box" class="popup" role="dialog" aria-modal="true">
-		<div class="close"><button type="button" aria-label="Закрыть"><i class="icon delete-icon"></i></button></div>
+	<div id="subscribe-box" class="popup">
+		<div class="close"><button><i class="icon delete-icon"></i></button></div>
 		<div class="flex popup-content">
 			<div class="popup-header">
 				<h3>Подписка на рассылку</h3>
@@ -2258,9 +2258,9 @@
 						</div>
 						<div class="legal-box flex">
 							<input type="checkbox" checked id="check2" />
-							<label for="check2">Даю согласие на получение информационной рассылки и <a href="#" target="_blank" rel="noopener noreferrer">обработку персональных данных</a></label>
+							<label for="check2">Даю согласие на получение информационной рассылки и <a href="#" target="_blank">обработку персональных данных</a></label>
 						</div>
-						<button class="btn" type="submit">Подписаться</button>
+						<button class="btn">Подписаться</button>
 					</form>
 				</div>
 			</div>
@@ -2268,8 +2268,8 @@
 	</div>
 	<!--/Subscribe-->
 	<!--Status-->
-	<div id="status" class="popup" role="dialog" aria-modal="true">
-		<div class="close"><button type="button" aria-label="Закрыть"><i class="icon delete-icon"></i></button></div>
+	<div id="status" class="popup">
+		<div class="close"><button><i class="icon delete-icon"></i></button></div>
 		<div class="flex popup-content">
 			<div class="popup-header">
 				<h3>СТАТУС ЗАКАЗА</h3>
@@ -2292,7 +2292,7 @@
 								<span class="error-txt"></span>
 							</div>
 						</div>
-						<button class="btn" type="submit">Найти</button>
+						<button class="btn">Найти</button>
 					</form>
 					<div class="stat-list">
 						<div class="stat-item">
@@ -2417,8 +2417,8 @@
 	</div>
 	<!--/Status-->
 	<!--Style-->
-	<div id="style-list" class="popup popup-box" role="dialog" aria-modal="true">
-		<div class="close"><button type="button" aria-label="Закрыть"><i class="icon delete-icon"></i></button></div>
+	<div id="style-list" class="popup popup-box">
+		<div class="close"><button><i class="icon delete-icon"></i></button></div>
 		<div class="flex popup-big__box">	
 			<div class="popup-img pc"><img src="img/home/catalog-popup.png" alt="Каталог товаров" loading="lazy" /></div>
 			<div class="flex popup-content">
@@ -2434,7 +2434,7 @@
 							<div class="catalog-item">
 								<div class="catalog-item__img-box">
 									<div class="label">до -30<i class="icon snow-icon"></i></div>
-									<div class="catalog-item__like-box"><button class="action-btn" type="button"><i class="icon like-icon"></i></button></div>
+									<div class="catalog-item__like-box"><button class="action-btn"><i class="icon like-icon"></i></button></div>
 									
 									<div class="catalog-item__basket-box flex">
 										<div class="catalog-item__icons-list flex">
@@ -2442,22 +2442,22 @@
 											<div class="catalog-item__icon tooltip" data-text="Водонепроницаемость 10 000 мм"><i class="icon catalog2"></i></div>
 											<div class="catalog-item__icon tooltip" data-text="Ветронепроницаемый материал"><i class="icon catalog3"></i></div>
 										</div>
-										<button class="action-btn" type="button"><i class="icon basket-icon"></i></button>
+										<button class="action-btn"><i class="icon basket-icon"></i></button>
 										<div class="add-size">
-											<div class="close-size" role="button" tabindex="0" aria-label="Закрыть"><i class="icon delete-icon"></i></div>
+											<div class="close-size"><i class="icon delete-icon"></i></div>
 											<h4>Выберите размер</h4>
 											<div class="add-size__box grid col-4">
-												<button class="btn btn-border disabled" type="button" data-popup data-animation="down" data-bg data-link="add-item">29</button>
-												<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">30</button>
-												<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">31</button>
-												<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">32</button>
-												<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">33</button>
-												<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">34</button>
-												<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">35</button>
-												<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">36</button>
-												<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">37</button>
-												<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">38</button>
-												<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">39</button>
+												<button class="btn btn-border disabled" data-popup data-animation="down" data-bg data-link="add-item">29</button>
+												<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">30</button>
+												<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">31</button>
+												<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">32</button>
+												<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">33</button>
+												<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">34</button>
+												<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">35</button>
+												<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">36</button>
+												<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">37</button>
+												<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">38</button>
+												<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">39</button>
 											</div>
 										</div>
 										<div class="size-bg"></div>
@@ -2501,19 +2501,19 @@
 							<div class="catalog-item">
 								<div class="catalog-item__img-box">
 									<div class="label">50%</div>
-									<div class="catalog-item__like-box"><button class="action-btn" type="button"><i class="icon like-icon"></i></button></div>
+									<div class="catalog-item__like-box"><button class="action-btn"><i class="icon like-icon"></i></button></div>
 									
 									<div class="catalog-item__basket-box flex">
 										<div class="catalog-item__icons-list flex">
 											<div class="catalog-item__icon tooltip" data-text="Ветронепроницаемый материал"><i class="icon catalog1"></i></div>
 										</div>
-										<button class="action-btn" type="button"><i class="icon basket-icon"></i></button>
+										<button class="action-btn"><i class="icon basket-icon"></i></button>
 										<div class="add-size">
-											<div class="close-size" role="button" tabindex="0" aria-label="Закрыть"><i class="icon delete-icon"></i></div>
+											<div class="close-size"><i class="icon delete-icon"></i></div>
 											<h4>Выберите размер</h4>
 											<div class="add-size__box grid col-4">
-												<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">29</button>
-												<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">30</button>
+												<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">29</button>
+												<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">30</button>
 											</div>
 										</div>
 										<div class="size-bg"></div>
@@ -2552,19 +2552,19 @@
 							<!--Item-->
 							<div class="catalog-item">
 								<div class="catalog-item__img-box">
-									<div class="catalog-item__like-box"><button class="action-btn" type="button"><i class="icon like-icon"></i></button></div>
+									<div class="catalog-item__like-box"><button class="action-btn"><i class="icon like-icon"></i></button></div>
 									
 									<div class="catalog-item__basket-box flex">
 										<div class="catalog-item__icons-list flex">
 											<div class="catalog-item__icon tooltip" data-text="Ветронепроницаемый материал"><i class="icon catalog1"></i></div>
 										</div>
-										<button class="action-btn" type="button"><i class="icon basket-icon"></i></button>
+										<button class="action-btn"><i class="icon basket-icon"></i></button>
 										<div class="add-size">
-											<div class="close-size" role="button" tabindex="0" aria-label="Закрыть"><i class="icon delete-icon"></i></div>
+											<div class="close-size"><i class="icon delete-icon"></i></div>
 											<h4>Выберите размер</h4>
 											<div class="add-size__box grid col-4">
-												<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">29</button>
-												<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">30</button>
+												<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">29</button>
+												<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">30</button>
 											</div>
 										</div>
 										<div class="size-bg"></div>
@@ -2602,19 +2602,19 @@
 							<!--Item-->
 							<div class="catalog-item">
 								<div class="catalog-item__img-box">
-									<div class="catalog-item__like-box"><button class="action-btn" type="button"><i class="icon like-icon"></i></button></div>
+									<div class="catalog-item__like-box"><button class="action-btn"><i class="icon like-icon"></i></button></div>
 									
 									<div class="catalog-item__basket-box flex">
 										<div class="catalog-item__icons-list flex">
 											<div class="catalog-item__icon tooltip" data-text="Ветронепроницаемый материал"><i class="icon catalog2"></i></div>
 										</div>
-										<button class="action-btn" type="button"><i class="icon basket-icon"></i></button>
+										<button class="action-btn"><i class="icon basket-icon"></i></button>
 										<div class="add-size">
-											<div class="close-size" role="button" tabindex="0" aria-label="Закрыть"><i class="icon delete-icon"></i></div>
+											<div class="close-size"><i class="icon delete-icon"></i></div>
 											<h4>Выберите размер</h4>
 											<div class="add-size__box grid col-4">
-												<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">29</button>
-												<button class="btn btn-border" type="button" data-popup data-animation="down" data-bg data-link="add-item">30</button>
+												<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">29</button>
+												<button class="btn btn-border" data-popup data-animation="down" data-bg data-link="add-item">30</button>
 											</div>
 										</div>
 										<div class="size-bg"></div>
@@ -2666,8 +2666,8 @@
 	</div>
 	<!--/Style-->
 	<!--Status-->
-	<div id="filter" class="popup" role="dialog" aria-modal="true">
-		<div class="close"><button type="button" aria-label="Закрыть"><i class="icon delete-icon"></i></button></div>
+	<div id="filter" class="popup">
+		<div class="close"><button><i class="icon delete-icon"></i></button></div>
 		<div class="flex popup-content">
 			<div class="popup-header">
 				<h3>Фильтры</h3>
@@ -2677,16 +2677,16 @@
 				<div class="popup-scroll">
 					<!--Item-->
 					<div class="filter-selected__box flex">
-						<div class="flex filter-selected__item">86<button type="button" aria-label="Удалить"><i class="icon delete-icon"></i></button></div>
-						<div class="flex filter-selected__item">92<button type="button" aria-label="Удалить"><i class="icon delete-icon"></i></button></div>
-						<div class="flex filter-selected__item">10 000 <span class="rub">₽</span> – 15 000 <span class="rub">₽</span><button type="button" aria-label="Удалить"><i class="icon delete-icon"></i></button></div>
-						<div class="flex filter-selected__item">Дети 3–7 лет<button type="button" aria-label="Удалить"><i class="icon delete-icon"></i></button></div>
-						<div class="flex filter-selected__item">Легкая степень утепления<button type="button" aria-label="Удалить"><i class="icon delete-icon"></i></button></div>
-						<div class="flex filter-selected__item">Средняя степень утепления<button type="button" aria-label="Удалить"><i class="icon delete-icon"></i></button></div>
-						<div class="flex filter-selected__item">100 – 200<button type="button" aria-label="Удалить"><i class="icon delete-icon"></i></button></div>
-						<div class="flex filter-selected__item"><div class="selected-color light-blue"></div>Голубой<button type="button" aria-label="Удалить"><i class="icon delete-icon"></i></button></div>
-						<div class="flex filter-selected__item"><div class="selected-color green"></div>Зеленый<button type="button" aria-label="Удалить"><i class="icon delete-icon"></i></button></div>
-						<div class="flex filter-selected__item">Распродажа<button type="button" aria-label="Удалить"><i class="icon delete-icon"></i></button></div>
+						<div class="flex filter-selected__item">86<button><i class="icon delete-icon"></i></button></div>
+						<div class="flex filter-selected__item">92<button><i class="icon delete-icon"></i></button></div>
+						<div class="flex filter-selected__item">10 000 <span class="rub">₽</span> – 15 000 <span class="rub">₽</span><button><i class="icon delete-icon"></i></button></div>
+						<div class="flex filter-selected__item">Дети 3–7 лет<button><i class="icon delete-icon"></i></button></div>
+						<div class="flex filter-selected__item">Легкая степень утепления<button><i class="icon delete-icon"></i></button></div>
+						<div class="flex filter-selected__item">Средняя степень утепления<button><i class="icon delete-icon"></i></button></div>
+						<div class="flex filter-selected__item">100 – 200<button><i class="icon delete-icon"></i></button></div>
+						<div class="flex filter-selected__item"><div class="selected-color light-blue"></div>Голубой<button><i class="icon delete-icon"></i></button></div>
+						<div class="flex filter-selected__item"><div class="selected-color green"></div>Зеленый<button><i class="icon delete-icon"></i></button></div>
+						<div class="flex filter-selected__item">Распродажа<button><i class="icon delete-icon"></i></button></div>
 					</div>
 					<!--/Item-->
 					<!--Item-->
@@ -2723,10 +2723,10 @@
 							<div class="flex filter-flex">
 								<div class="filter-flex__header ph flex">
 									<div class="filter-back flex"><i class="icon back-icon"></i><span>размер</span><div class="filter-active__num">2</div></div>
-									<button class="del-filter btn" type="button">Сбросить</button>
+									<button class="del-filter btn">Сбросить</button>
 								</div>
 								<div class="filter-flex__body">
-									<a href="#" class="table-size" target="_blank" rel="noopener noreferrer"><i class="icon size-icon"></i>Таблица размеров</a>
+									<a href="#" class="table-size" target="_blank"><i class="icon size-icon"></i>Таблица размеров</a>
 									<div class="grid col-4">
 										<div class="filter-check__sizes">
 											<input type="checkbox" id="check3" disabled />
@@ -2851,7 +2851,7 @@
 									</div>
 								</div>
 								<div class="filter-flex__btn ph">
-									<button class="btn" type="button">Показать 58 товаров</button>
+									<button class="btn">Показать 58 товаров</button>
 								</div>
 							</div>
 						</div>
@@ -2864,12 +2864,12 @@
 							<div class="filter-price__box">
 								<div class="flex">
 									<div class="filter-price__input">	
-										<button class="delete-btn" type="button" aria-label="Удалить"><i class="icon delete-icon"></i></button>
+										<button class="delete-btn"><i class="icon delete-icon"></i></button>
 										<input type="text" class="price" value="10000 ₽" placeholder="749 ₽">
 										<label>от</label>
 									</div>
 									<div class="filter-price__input">	
-										<button class="delete-btn" type="button" aria-label="Удалить"><i class="icon delete-icon"></i></button>
+										<button class="delete-btn"><i class="icon delete-icon"></i></button>
 										<input type="text" class="price" value="15000 ₽" placeholder="21 999 ₽">
 										<label>до</label>
 									</div>
@@ -2892,7 +2892,7 @@
 							<div class="flex filter-flex">
 								<div class="filter-flex__header ph flex">
 									<div class="filter-back flex"><i class="icon back-icon"></i><span>Возрастная группа</span><div class="filter-active__num">1</div></div>
-									<button class="del-filter btn" type="button">Сбросить</button>
+									<button class="del-filter btn">Сбросить</button>
 								</div>
 								<div class="filter-flex__body">
 									<div class="filter-check__box flex">
@@ -2909,7 +2909,7 @@
 									</div>
 								</div>
 								<div class="filter-flex__btn ph">
-									<button class="btn" type="button">Показать 58 товаров</button>
+									<button class="btn">Показать 58 товаров</button>
 								</div>
 							</div>
 						</div>
@@ -2922,7 +2922,7 @@
 							<div class="flex filter-flex">
 								<div class="filter-flex__header ph flex">
 									<div class="filter-back flex"><i class="icon back-icon"></i><span>Степень утепления</span><div class="filter-active__num">2</div></div>
-									<button class="del-filter btn" type="button">Сбросить</button>
+									<button class="del-filter btn">Сбросить</button>
 								</div>
 								<div class="filter-flex__body">
 									<div class="filter-check__box flex">
@@ -2943,7 +2943,7 @@
 									</div>
 								</div>
 								<div class="filter-flex__btn ph">
-									<button class="btn" type="button">Показать 58 товаров</button>
+									<button class="btn">Показать 58 товаров</button>
 								</div>
 							</div>
 						</div>
@@ -2956,12 +2956,12 @@
 							<div class="filter-price__box">
 								<div class="flex">
 									<div class="filter-price__input">
-										<button class="delete-btn" type="button" aria-label="Удалить"><i class="icon delete-icon"></i></button>
+										<button class="delete-btn"><i class="icon delete-icon"></i></button>
 										<input type="text" class="number" value="100" placeholder="0">
 										<label>от</label>
 									</div>
 									<div class="filter-price__input">
-										<button class="delete-btn" type="button" aria-label="Удалить"><i class="icon delete-icon"></i></button>
+										<button class="delete-btn"><i class="icon delete-icon"></i></button>
 										<input type="text" class="number" value="200" placeholder="310">
 										<label>до</label>
 									</div>
@@ -2984,7 +2984,7 @@
 							<div class="flex filter-flex">
 								<div class="filter-flex__header ph flex">
 									<div class="filter-back flex"><i class="icon back-icon"></i><span>Цвет</span><div class="filter-active__num">2</div></div>
-									<button class="del-filter btn" type="button">Сбросить</button>
+									<button class="del-filter btn">Сбросить</button>
 								</div>
 								<div class="filter-flex__body">
 									<div class="filter-check__box flex">
@@ -3049,7 +3049,7 @@
 									</div>
 								</div>
 								<div class="filter-flex__btn ph">
-									<button class="btn" type="button">Показать 58 товаров</button>
+									<button class="btn">Показать 58 товаров</button>
 								</div>
 							</div>
 						</div>
@@ -3067,8 +3067,8 @@
 			</div>
 			
 			<div class="popup-btns__filter">
-				<button class="btn" type="button">Показать 9 999 товаров</button>
-				<button class="btn btn-white" type="button">Сбросить фильтры</button>
+				<button class="btn">Показать 9 999 товаров</button>
+				<button class="btn btn-white">Сбросить фильтры</button>
 			</div>
 		</div>
 	</div>

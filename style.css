@@ -108,7 +108,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar, .fancybox-slide::-webkit-scrol
 	width: 4px;
 	scrollbar-color:transparent;
 }
-html::-webkit-scrollbar-track, body::-webkit-scrollbar-track, .fancybox-slide::-webkit-scrollbar-track, textarea::-webkit-scrollbar-track, .link-popup__list::-webkit-scrollbar-track, .popup::-webkit-scrollbar-track, .filter-item__list::-webkit-scrollbar-track, .pickup-popup__list::-webkit-scrollbar-track, .popup-box::-webkit-scrollbar-track, .filter-shop__list-check::-webkit-scrollbar-track, .map-select__list::-webkit-scrollbar-track, #registration:not(:has(.step-active)) .popup-form::-webkit-scrollbar-trac, .tabber-content.map-delivery__txt-list::-webkit-scrollbar-trac, .popup-scroll::-webkit-scrollbar-trac, .menu-header__box nav::-webkit-scrollbar-trac, .parent .child-menu::-webkit-scrollbar-trac {
+html::-webkit-scrollbar-track, body::-webkit-scrollbar-track, .fancybox-slide::-webkit-scrollbar-track, textarea::-webkit-scrollbar-track, .link-popup__list::-webkit-scrollbar-track, .popup::-webkit-scrollbar-track, .filter-item__list::-webkit-scrollbar-track, .pickup-popup__list::-webkit-scrollbar-track, .popup-box::-webkit-scrollbar-track, .filter-shop__list-check::-webkit-scrollbar-track, .map-select__list::-webkit-scrollbar-track, #registration:not(:has(.step-active)) .popup-form::-webkit-scrollbar-track, .tabber-content.map-delivery__txt-list::-webkit-scrollbar-track, .popup-scroll::-webkit-scrollbar-track, .menu-header__box nav::-webkit-scrollbar-track, .parent .child-menu::-webkit-scrollbar-track {
 	background: transparent;
 	scrollbar-color:transparent;
 }
@@ -255,17 +255,11 @@ main #subscribe input[type=text]:hover::placeholder {
 	color:var(--link-color-hover);
 	border-color:var(--white);
 }
-main input[type=text]:disabled, main input[type=email]:disabled, main input[type=password]:disabled, main input[type=number]:disabled, main input[type=phone]:disabled, main textarea:disabled, main input[type=date]:disabled, .popup input[type=text]:disabled, .popup input[type=email]:disabled, .popup input[type=password]:disabled, .popup input[type=number]:disabled, .popup input[type=phone]:disabled, .popup textarea:disabled, .popup input[type=date]:disabled, #search:disabled, main textarea:disabled, .popup textarea:disabled {
-	
-}
 main label, .popup label {
 	font-size: var(--font-small);
 	line-height: 16px;
 	color:var(--link-color-hover);
 	display:block;
-}
-.input-box input:focus + label, .input-box input.tel:hover + label, .input-box input:not(:placeholder-shown) + label, .order-pickup__list-search__box input:not(:placeholder-shown) + label, .order-pickup__list-search__box input:focus + label, main textarea:not(:placeholder-shown) + label, .popup textarea:not(:placeholder-shown) + label, main textarea:focus + label, .popup textarea:focus + label, .input-box input.date:hover + label {
-	
 }
 button {
 	cursor:pointer;
@@ -729,9 +723,6 @@ svg path, svg rect, a, .icon, input[type=submit], button, .btn, input[type=text]
 	flex-flow:column;
 	align-items:center;
 	justify-content:center;
-}
-.tabber-menu__item svg {
-	
 }
 header {
 	position:fixed;
@@ -1560,7 +1551,7 @@ section {
 .catalog-banner__list a:hover img {
 	transform:scale(1.03);
 }
-.subscribe-txt__box input[type-text] {
+.subscribe-txt__box input[type="text"] {
 	border-color:var(--white);
 }
 .subscribe-txt__box h2 {
@@ -2938,7 +2929,7 @@ input[type=number] {
 }
 .product-gallery__banner-txt h4, .product-gallery__tech-txt h4 {
 	margin:0;
-	color:Var(--white);
+	color: var(--white);
 }
 .product-gallery__tech-txt h4 {
 	margin:0 0 6px;
