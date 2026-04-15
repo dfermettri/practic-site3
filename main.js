@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- БАЗОВЫЕ ПОПАПЫ ---
   const hideAllPopups = () => {
     qa(".popup").forEach((p) => (p.style.display = "none"));
-    const black = q(".black-bg");
-    if (black) black.style.display = "none";
+    // Скрываем все black-bg
+    qa(".black-bg").forEach((bg) => (bg.style.display = "none"));
     document.body.classList.remove("fix");
   };
 
@@ -28,16 +28,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const trigger = e.target.closest("[data-popup]");
     if (trigger) {
       const link = trigger.dataset.link;
-      const isSizeBtn = trigger.classList.contains("btn-border") && link === "add-item";
-      if (!isSizeBtn && link) {
+      if (link) {
         e.preventDefault();
         hideAllPopups();
         const popup = q(`#${link}`);
         if (popup) {
           popup.style.display = "block";
           document.body.classList.add("fix");
+          // Показываем black-bg для этого popup
           if (trigger.hasAttribute("data-bg")) {
-            const black = q(".black-bg");
+            const black = q(`.black-bg[data-for="${link}"]`);
             if (black) black.style.display = "block";
           }
         }
@@ -53,10 +53,9 @@ document.addEventListener("DOMContentLoaded", () => {
       hideAllPopups();
     }
 
-    // клик по размерам
+    // клик по размерам (визуальное выделение)
     const sizeBtn = e.target.closest("button.btn.btn-border[data-link='add-item']");
     if (sizeBtn) {
-      e.preventDefault();
       const group =
         sizeBtn.closest(".add-size__box") ||
         sizeBtn.closest(".product-item__size") ||
