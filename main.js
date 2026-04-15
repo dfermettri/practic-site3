@@ -54,7 +54,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // клик по размерам (визуальное выделение)
-    const sizeBtn = e.target.closest("button.btn.btn-border[data-link='add-item']");
+    const sizeBtn = e.target.closest(
+      ".add-size__box button.btn.btn-border, .product-item__size button.btn.btn-border, .catalog-item__size-box button.btn.btn-border"
+    );
     if (sizeBtn) {
       const group =
         sizeBtn.closest(".add-size__box") ||
@@ -62,9 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
         sizeBtn.closest(".catalog-item__size-box") ||
         sizeBtn.parentElement;
       if (group) {
-        qa("button.btn.btn-border[data-link='add-item']", group).forEach((b) =>
-          b.classList.remove("active")
-        );
+        qa("button.btn.btn-border", group).forEach((b) => b.classList.remove("active"));
       }
       sizeBtn.classList.add("active");
     }
