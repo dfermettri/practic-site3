@@ -205,6 +205,48 @@ document.addEventListener("DOMContentLoaded", () => {
 
   initProductGallery();
 
+  // --- DESKTOP: "ХОРОШО СОЧЕТАЕТСЯ С" ПОД БЛОКОМ ССЫЛОК ТОВАРА ---
+  const sliderProductBox = document.querySelector(".slider-product__box");
+  const productInfoBlock = document.querySelector(".product-info__block");
+  const productItemLinks = productInfoBlock?.querySelector(".product-item__links");
+  const sliderOriginalParent = sliderProductBox?.parentNode || null;
+  const sliderOriginalNextSibling = sliderProductBox?.nextSibling || null;
+  const desktopMedia = window.matchMedia("(min-width: 1201px)");
+
+  const placeSliderByViewport = () => {
+    if (!sliderProductBox || !productInfoBlock || !productItemLinks || !sliderOriginalParent) return;
+    let didMoveSlider = false;
+
+    if (desktopMedia.matches) {
+      if (sliderProductBox.parentNode !== productInfoBlock) {
+        productInfoBlock.insertBefore(sliderProductBox, productItemLinks.nextSibling);
+        didMoveSlider = true;
+      }
+    } else if (sliderProductBox.parentNode !== sliderOriginalParent) {
+      if (sliderOriginalNextSibling && sliderOriginalNextSibling.parentNode === sliderOriginalParent) {
+        sliderOriginalParent.insertBefore(sliderProductBox, sliderOriginalNextSibling);
+      } else {
+        sliderOriginalParent.appendChild(sliderProductBox);
+      }
+      didMoveSlider = true;
+    }
+
+    if (didMoveSlider) {
+      // initLoopSlider пересчитывает геометрию на resize,
+      // поэтому после переноса блока триггерим пересчет сразу.
+      window.requestAnimationFrame(() => {
+        window.dispatchEvent(new Event("resize"));
+      });
+    }
+  };
+
+  placeSliderByViewport();
+  if (desktopMedia.addEventListener) {
+    desktopMedia.addEventListener("change", placeSliderByViewport);
+  } else if (desktopMedia.addListener) {
+    desktopMedia.addListener(placeSliderByViewport);
+  }
+
   // --- ШТОРКА ITEM-COMPONENTS ---
   const itemComponents = document.querySelector(".item-components");
   const itemComponentRight = document.querySelector(".item-component-right");
@@ -247,17 +289,80 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // --- DESKTOP SCROLL TO TOP BUTTON ---
+  const scrollTopBtn = document.querySelector(".scroll-top-btn");
+  if (scrollTopBtn) {
+    const desktopMedia = window.matchMedia("(min-width: 1201px)");
+    const toggleScrollTopBtn = () => {
+      const shouldShow = desktopMedia.matches && window.scrollY > 120;
+      scrollTopBtn.classList.toggle("visible", shouldShow);
+    };
+
+    scrollTopBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    window.addEventListener("scroll", toggleScrollTopBtn, { passive: true });
+    window.addEventListener("resize", toggleScrollTopBtn);
+    toggleScrollTopBtn();
+  }
+
   // --- STICKY BOTTOM BAR ---
   const stickyBar = document.querySelector(".sticky-bottom-bar");
   const tabber = document.querySelector(".tabber-menu__box");
   const header = document.querySelector(".page-header");
+  const footerBottomBox = document.querySelector(".footer-bottom__box");
+  const body = document.body;
   if (stickyBar) {
+    const tabberInitialParent = tabber?.parentNode || null;
+    const tabberInitialNextSibling = tabber?.nextSibling || null;
+
+    const moveTabberAfterFooter = () => {
+      if (!tabber || !footerBottomBox || tabber.classList.contains("at-footer")) return;
+      footerBottomBox.insertAdjacentElement("afterend", tabber);
+      tabber.classList.add("at-footer");
+      body.classList.add("tabber-at-footer");
+    };
+
+    const restoreTabberPosition = () => {
+      if (!tabber || !tabberInitialParent || !tabber.classList.contains("at-footer")) return;
+      if (tabberInitialNextSibling && tabberInitialNextSibling.parentNode === tabberInitialParent) {
+        tabberInitialParent.insertBefore(tabber, tabberInitialNextSibling);
+      } else {
+        tabberInitialParent.appendChild(tabber);
+      }
+      tabber.classList.remove("at-footer");
+      body.classList.remove("tabber-at-footer");
+    };
+
     let lastScrollY = window.scrollY;
     let ticking = false;
     window.addEventListener("scroll", () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           const currentScrollY = window.scrollY;
+          const doc = document.documentElement;
+          const isAtPageBottom = currentScrollY + window.innerHeight >= doc.scrollHeight - 80;
+          const isFooterVisible = footerBottomBox
+            ? footerBottomBox.getBoundingClientRect().top <= window.innerHeight
+            : false;
+          const shouldAttachTabberToFooter = isAtPageBottom || isFooterVisible;
+
+          if (shouldAttachTabberToFooter) {
+            tabber?.classList.remove("hidden");
+            moveTabberAfterFooter();
+            body.classList.add("tabber-at-footer");
+            stickyBar.classList.remove("active");
+            stickyBar.classList.remove("above-tabber");
+            lastScrollY = currentScrollY;
+            ticking = false;
+            return;
+          } else {
+            restoreTabberPosition();
+            body.classList.remove("tabber-at-footer");
+          }
+
           // Sticky bar
           if (currentScrollY > 400) {
             stickyBar.classList.add("active");
@@ -285,5 +390,6 @@ document.addEventListener("DOMContentLoaded", () => {
         ticking = true;
       }
     });
+    window.dispatchEvent(new Event("scroll"));
   }
 });

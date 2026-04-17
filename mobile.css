@@ -10,6 +10,13 @@ body {
 	margin:0 0 58px;
 	padding-bottom: 68px !important;
 }
+ .scroll-top-btn {
+	display:none !important;
+}
+body.tabber-at-footer {
+	margin-bottom: 0 !important;
+	padding-bottom: 0 !important;
+}
 h1 {
 	font-size:32px;
 }
@@ -155,6 +162,11 @@ position:relative;
 }
 .tabber-menu__box.hidden {
 	transform: translateY(100%) !important;
+}
+.tabber-menu__box.at-footer {
+	position: static !important;
+	transform: none !important;
+	display: block !important;
 }
 .page-header {
 	transition: transform 0.3s ease !important;
@@ -697,7 +709,6 @@ header.fixed .menu-btn:hover span {
 }
 .footer-qr__box {
 	padding:24px 16px 0;
-	margin:27px 0 0;
 }
 #menu-phone .footer-qr__box h4 {
 	font-weight:normal;
@@ -1377,6 +1388,10 @@ body:has(.page-header) main {
 }
 .slider-product__box h2 {
 	padding-left: 16px !important;
+	font-size: 14px !important;
+	font-weight: 700 !important;
+	line-height: var(--font-line) !important;
+	text-transform: uppercase !important;
 }
 .slider-product .catalog-item__txt-box {
 	padding-left: 16px !important;
@@ -1425,12 +1440,22 @@ body:has(.page-header) main {
 .reviews-empty__content {
 	max-width: 100%;
 	width: 100%;
+	height: auto !important;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 12px;
 }
 
 .reviews-empty__content .btn {
 	justify-content: center;
 	width: 343px;
 	height: 40px;
+	margin: 0 !important;
+}
+
+#reviews .reviews-btn-all {
+	margin-top: 24px !important;
 }
 
 .reviews-slider.no-reviews + .reviews-empty + .btn,
