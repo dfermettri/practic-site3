@@ -936,7 +936,7 @@
 			<div class="flex header-menu__links">
 				<a href="#" aria-label="Поиск"><i class="icon search-icon"></i></a>
 				<a href="#" aria-label="Профиль"><i class="icon user-icon"></i></a>
-				<a href="#" aria-label="В избранное"><i class="icon like-icon"></i></a>
+						<a href="#" class="favorite-link" aria-label="В избранное"><i class="icon like-icon"></i><span class="basket-num__box favorite-num__box" aria-hidden="true">0</span></a>
 				<a href="#" aria-label="Корзина" data-popup data-animation="right" data-bg data-link="basket"><i class="icon basket-icon"></i></a>
 			</div>
 			<!--/Right Menu-->
@@ -1030,9 +1030,9 @@
 						<div class="catalog-item__like-box"><button class="btn btn-border" type="button" aria-label="В избранное"><i class="icon like-icon"></i></button></div>
 					</div>
 					<div class="product-item__links">
-						<div class="product-item__link flex"><button class="btn btn-white" type="button" data-popup data-animation="right" data-bg data-link="description">Описание и характеристики</button></div>
-						<div class="product-item__link flex"><button class="btn btn-white" type="button" data-popup data-animation="right" data-bg data-link="delivery">Доставка</button></div>
-						<div class="product-item__link flex"><button class="btn btn-white" type="button" data-popup data-animation="right" data-bg data-link="care">Состав и уход</button></div>
+						<div class="product-item__link flex"><button class="btn btn-white" type="button" data-popup data-animation="right" data-bg data-link="description"><span class="product-link-title">Описание и характеристики</span></button></div>
+						<div class="product-item__link flex"><button class="btn btn-white" type="button" data-popup data-animation="right" data-bg data-link="delivery"><span class="product-link-title">Доставка</span></button></div>
+						<div class="product-item__link flex"><button class="btn btn-white" type="button" data-popup data-animation="right" data-bg data-link="care"><span class="product-link-title">Состав и уход</span></button></div>
 					</div>
 				</div>
 				<!--/Info-->
@@ -1051,7 +1051,7 @@
 			<!--/Sticky Bottom Bar-->
 			<!--Slider-->
 					<div class="slider-product__box">
-						<h2>Хорошо сочетается</h2>
+						<h2 class="product-slider-title">Хорошо сочетается</h2>
 						<div class="swiper slider-product">
 							<div class="swiper-wrapper">
 								<!--Item-->
@@ -1437,7 +1437,6 @@
         		</div>
     		</div>
 			<!--/Empty-reviews-->
-			<a href="#" class="btn reviews-btn-all">Смотреть все отзывы</a>
 		</section>
 		<!--/Reviews-->
 		<!--Slider Items-->
@@ -2119,7 +2118,7 @@
 	<!--Message-->
 	<div id="info-message">
 		<div class="flex">		
-			<span></span>
+			<span>Товар добавлен в избранное</span>
 			<div class="close-box" role="button" tabindex="0" aria-label="Закрыть"><i class="icon delete-icon"></i></div>
 		</div>
 	</div>

@@ -1,6 +1,41 @@
 document.addEventListener("DOMContentLoaded", () => {
   const q = (s, root = document) => root.querySelector(s);
   const qa = (s, root = document) => Array.from(root.querySelectorAll(s));
+  const favoriteCounter = q(".favorite-num__box");
+  const infoMessage = q("#info-message");
+  const infoMessageText = q("#info-message span");
+  const infoMessageClose = q("#info-message .close-box");
+  let infoMessageTimer = null;
+
+  const updateFavoriteCounter = () => {
+    if (!favoriteCounter) return;
+    const count = qa(".catalog-item__like-box button.selected, .sticky-bottom-bar__like-btn.selected").length;
+    favoriteCounter.textContent = String(count);
+    favoriteCounter.classList.toggle("visible", count > 0);
+  };
+
+  const hideInfoMessage = () => {
+    if (!infoMessage) return;
+    infoMessage.style.display = "none";
+    if (infoMessageTimer) {
+      window.clearTimeout(infoMessageTimer);
+      infoMessageTimer = null;
+    }
+  };
+
+  const showInfoMessage = (message) => {
+    if (!infoMessage || !infoMessageText) return;
+    infoMessageText.textContent = message;
+    infoMessage.style.display = "flex";
+    if (infoMessageTimer) {
+      window.clearTimeout(infoMessageTimer);
+    }
+    infoMessageTimer = window.setTimeout(() => {
+      hideInfoMessage();
+    }, 3000);
+  };
+
+  infoMessageClose?.addEventListener("click", hideInfoMessage);
 
   // --- БАЗОВЫЕ ПОПАПЫ ---
   const hideAllPopups = () => {
@@ -67,6 +102,19 @@ document.addEventListener("DOMContentLoaded", () => {
         qa("button.btn.btn-border", group).forEach((b) => b.classList.remove("active"));
       }
       sizeBtn.classList.add("active");
+    }
+
+    const favoriteBtn = e.target.closest(".catalog-item__like-box button, .sticky-bottom-bar__like-btn");
+    if (favoriteBtn) {
+      const likeIcon = q(".like-icon", favoriteBtn);
+      if (!likeIcon) return;
+      e.preventDefault();
+      const isSelected = favoriteBtn.classList.toggle("selected");
+      favoriteBtn.setAttribute("aria-pressed", String(isSelected));
+      updateFavoriteCounter();
+      if (isSelected && favoriteBtn.matches(".catalog-item__like-box .btn.btn-border")) {
+        showInfoMessage("Товар добавлен в избранное");
+      }
     }
   });
 
@@ -392,4 +440,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     window.dispatchEvent(new Event("scroll"));
   }
+
+  updateFavoriteCounter();
 });
