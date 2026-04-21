@@ -193,6 +193,16 @@ position:relative;
 	top:-4px;
 	border:1px solid var(--white);
 }
+.tabber-menu__item .mobile-favorite-num__box {
+	display:none;
+	background:#002354;
+	color:var(--white);
+}
+.tabber-menu__item .mobile-favorite-num__box.visible {
+	display:flex;
+	background:#002354;
+	color:var(--white);
+}
 .tabber-menu__item.selected .basket-num__box {
 	background:var(--font-color);
 }
@@ -1006,16 +1016,29 @@ body:has(.page-header) main {
     left: 16px;
 }
 #info-message {
-	top:auto;
-	bottom:24px;
+	top:52px;
+	bottom:auto;
 	left:50%;
 	transform:translateX(-50%);
 	padding:10px 13px 8px 24px;
-	width:calc(100vw - 32px);
-	max-width:359px;
+	width:max-content;
+	max-width:none;
+	align-items:center;
 }
 #info-message .flex {
 	gap:10px;
+	align-items:center;
+}
+#info-message span {
+	width:auto;
+	white-space:nowrap;
+}
+#info-message .close-box {
+	width:16px;
+	height:16px;
+	display:flex;
+	align-items:center;
+	justify-content:center;
 }
 
 /* === МОБИЛЬНАЯ АДАПТАЦИЯ ТОВАРА === */
@@ -1352,6 +1375,12 @@ body:has(.page-header) main {
 	width: 20px !important;
 	height: 20px !important;
 	background-color: var(--font-color) !important;
+}
+.sticky-bottom-bar__like-btn.selected i,
+.sticky-bottom-bar__like-btn.selected:hover i {
+	background-color: var(--font-color) !important;
+	mask-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.0004 19.301L5.80078 13.1014C4.08795 11.3885 4.08795 8.61158 5.80078 6.89874C7.51361 5.18591 10.2906 5.18591 12.0034 6.89874L11.9972 6.90503L11.9909 6.89874C13.7037 5.18591 16.4807 5.18591 18.1935 6.89874C19.9064 8.61158 19.9064 11.3885 18.1935 13.1014L12.0004 19.301Z' fill='%23002354'/%3E%3C/svg%3E") !important;
+	-webkit-mask-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.0004 19.301L5.80078 13.1014C4.08795 11.3885 4.08795 8.61158 5.80078 6.89874C7.51361 5.18591 10.2906 5.18591 12.0034 6.89874L11.9972 6.90503L11.9909 6.89874C13.7037 5.18591 16.4807 5.18591 18.1935 6.89874C19.9064 8.61158 19.9064 11.3885 18.1935 13.1014L12.0004 19.301Z' fill='%23002354'/%3E%3C/svg%3E") !important;
 }
 .item-rating {
 	margin: 8px 0 16px !important;

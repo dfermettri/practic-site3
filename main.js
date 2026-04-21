@@ -1,17 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
   const q = (s, root = document) => root.querySelector(s);
   const qa = (s, root = document) => Array.from(root.querySelectorAll(s));
-  const favoriteCounter = q(".favorite-num__box");
+  const favoriteCounters = qa(".favorite-num__box");
   const infoMessage = q("#info-message");
   const infoMessageText = q("#info-message span");
   const infoMessageClose = q("#info-message .close-box");
   let infoMessageTimer = null;
 
   const updateFavoriteCounter = () => {
-    if (!favoriteCounter) return;
+    if (!favoriteCounters.length) return;
     const count = qa(".catalog-item__like-box button.selected, .sticky-bottom-bar__like-btn.selected").length;
-    favoriteCounter.textContent = String(count);
-    favoriteCounter.classList.toggle("visible", count > 0);
+    favoriteCounters.forEach((favoriteCounter) => {
+      favoriteCounter.textContent = String(count);
+      favoriteCounter.classList.toggle("visible", count > 0);
+    });
   };
 
   const hideInfoMessage = () => {
@@ -112,8 +114,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const isSelected = favoriteBtn.classList.toggle("selected");
       favoriteBtn.setAttribute("aria-pressed", String(isSelected));
       updateFavoriteCounter();
-      if (isSelected && favoriteBtn.matches(".catalog-item__like-box .btn.btn-border")) {
-        showInfoMessage("Товар добавлен в избранное");
+      if (favoriteBtn.matches(".catalog-item__like-box .btn.btn-border, .sticky-bottom-bar__like-btn")) {
+        showInfoMessage(isSelected ? "Товар добавлен в избранное" : "Товар удален из избранного");
       }
     }
   });
