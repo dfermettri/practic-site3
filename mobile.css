@@ -104,7 +104,10 @@ main input[type=submit], main button, .btn {
 	height:16px;
 }
 .wrapper {
+	width:auto;
 	margin:0 16px;
+	padding:0;
+	max-width:none;
 }
 #catalog.wrapper {
 	margin: 0 !important;

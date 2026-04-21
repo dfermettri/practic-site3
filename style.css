@@ -329,7 +329,10 @@ main input[type=submit]:hover, main button:hover, .btn:hover, .filters-header bu
 	margin:4px 0 0;
 }
 .wrapper {
-	margin:0 60px;
+	width:100%;
+	max-width:1610px;
+	margin:0 auto;
+	padding:0 60px;
 	box-sizing:border-box;
 }
 .flex {
@@ -727,6 +730,9 @@ svg path, svg rect, a, .icon, input[type=submit], button, .btn, input[type=text]
 .scroll-top-btn {
     width: 48px;
     height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 50%;
     border: 0;
     outline: none;
@@ -734,15 +740,19 @@ svg path, svg rect, a, .icon, input[type=submit], button, .btn, input[type=text]
     position: fixed;
     bottom: 95px;
     right: 60px;
-    background: var(--light-blue) url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15.9912 4.27344L24.5215 12.8037L23.4609 13.8643L16.7412 7.14453L16.7412 26.667L15.2412 26.667L15.2412 7.14453L8.52149 13.8643L7.46094 12.8037L15.9912 4.27344Z' fill='%23002354'/%3E%3C/svg%3E%0A") no-repeat center center;
+    background: var(--light-blue);
     box-shadow: rgba(0, 35, 84, 0.09) 0px 0px 40px;
-    display: block;
     opacity: 0;
     visibility: hidden;
     transform: translateY(8px);
     pointer-events: none;
     z-index: 100;
     cursor: pointer;
+}
+.scroll-top-btn img {
+    display: block;
+    width: 32px;
+    height: 32px;
 }
 .scroll-top-btn:focus,
 .scroll-top-btn:focus-visible,
@@ -759,11 +769,7 @@ svg path, svg rect, a, .icon, input[type=submit], button, .btn, input[type=text]
 .scroll-top-btn:hover {
 	filter: brightness(0.9);
 }
-.scroll-top-btn img {
-	display:block;
-	width:100%;
-	height:100%;
-}
+
 header {
 	position:fixed;
 	top:0;
@@ -2862,18 +2868,31 @@ input[type=number] {
 }
 .product-item__box {
 	position:relative;
-	align-items:normal;
+	justify-content:center;
+	align-items:flex-start;
 	gap:24px;
 }
 .product-item__gallery {
 	position:relative;
-	width:100%;
+	flex:1 1 1208px;
+	width:auto;
 	max-width:1208px;
-	margin-left:-60px;
+	min-width:0;
+	margin-left:0;
 }
 .product-info__block {
-	width:100%;
+	flex:0 1 628px;
+	width:auto;
 	max-width:628px;
+	min-width:0;
+}
+@media screen and (min-width:1201px) {
+.product-info__block {
+	position:sticky;
+	top:124px;
+	align-self:flex-start;
+	height:max-content;
+}
 }
 .product-gallery__item video {
 	width:100%;
