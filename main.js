@@ -358,6 +358,44 @@ document.addEventListener("DOMContentLoaded", () => {
     toggleScrollTopBtn();
   }
 
+  // --- DESKTOP STICKY ADD BAR ---
+  const desktopStickyAddBar = document.querySelector(".desktop-sticky-add");
+  const desktopAddBtnBox = document.querySelector(".product-item__add-btn .catalog-item__add-box");
+  const desktopHeader = document.querySelector("header");
+  if (desktopStickyAddBar && desktopAddBtnBox) {
+    const desktopMedia = window.matchMedia("(min-width: 1201px)");
+    let isAddBtnVisible = true;
+
+    const updateDesktopStickyTop = () => {
+      const headerHeight = desktopHeader ? Math.round(desktopHeader.getBoundingClientRect().height) : 96;
+      document.documentElement.style.setProperty("--desktop-sticky-add-top", `${headerHeight}px`);
+    };
+
+    const updateDesktopStickyVisibility = () => {
+      const shouldShow = desktopMedia.matches && !isAddBtnVisible;
+      desktopStickyAddBar.classList.toggle("active", shouldShow);
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        isAddBtnVisible = entries[0]?.isIntersecting ?? false;
+        updateDesktopStickyVisibility();
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(desktopAddBtnBox);
+    window.addEventListener("resize", updateDesktopStickyTop);
+    if (desktopMedia.addEventListener) {
+      desktopMedia.addEventListener("change", updateDesktopStickyVisibility);
+    } else if (desktopMedia.addListener) {
+      desktopMedia.addListener(updateDesktopStickyVisibility);
+    }
+
+    updateDesktopStickyTop();
+    updateDesktopStickyVisibility();
+  }
+
   // --- STICKY BOTTOM BAR ---
   const stickyBar = document.querySelector(".sticky-bottom-bar");
   const tabber = document.querySelector(".tabber-menu__box");

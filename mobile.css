@@ -13,6 +13,9 @@ body {
  .scroll-top-btn {
 	display:none !important;
 }
+.desktop-sticky-add {
+	display:none !important;
+}
 body.tabber-at-footer {
 	margin-bottom: 0 !important;
 	padding-bottom: 0 !important;

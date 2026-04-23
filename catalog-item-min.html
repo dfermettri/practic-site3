@@ -947,6 +947,31 @@
 		</div>
 	</header>
 	<!--/Header-->
+	<div class="desktop-sticky-add">
+		<div class="wrapper flex desktop-sticky-add__inner">
+			<div class="desktop-sticky-add__left flex">
+				<div class="product-color__select desktop-sticky-add__thumb">
+					<label><img src="img/item/item-color1.png" alt="Розовый цвет брюк" loading="lazy" /></label>
+				</div>
+				<div class="desktop-sticky-add__info">
+					<div class="desktop-sticky-add__title">Зимние брюки Lassie Otra Розовые мембрана 10 000</div>
+					<div class="desktop-sticky-add__meta flex">
+						<div class="desktop-sticky-add__rating">—</div>
+						<div class="desktop-sticky-add__reviews">—</div>
+						<div class="desktop-sticky-add__color flex">
+							<div class="catalog-item__color pink"></div>
+							<span>Розовый</span>
+						</div>
+						<div class="product-select__box desktop-sticky-add__size">Размер:<span class="desktop-sticky-size-value" data-popup data-bg data-link="desktop-size-select">52</span></div>
+					</div>
+				</div>
+			</div>
+			<div class="desktop-sticky-add__right flex">
+				<div class="desktop-sticky-add__price">3499<span class="rub">₽</span></div>
+				<button class="btn" type="button" data-popup data-animation="down" data-bg data-link="add-item">Добавить в корзину</button>
+			</div>
+		</div>
+	</div>
 	<!--Content-->
 	<main>
 		<!--Catalog-->
@@ -2124,6 +2149,28 @@
 		</div>
 	</div>
 	<!--/Message-->
+	<!--Desktop Size Select-->
+	<div id="desktop-size-select" class="popup" role="dialog" aria-modal="true">
+		<div class="close"><button type="button" aria-label="Закрыть"><i class="icon delete-icon"></i></button></div>
+		<div class="flex popup-content">
+			<div class="popup-header">
+				<h3>Выберите размер</h3>
+			</div>
+			<div class="flex popup-content__box">
+				<div class="popup-scroll">
+					<a href="#" class="table-size" target="_blank" rel="noopener noreferrer" data-popup data-animation="right" data-bg data-link="table-size"><i class="icon size-icon"></i>Таблица размеров</a>
+					<div class="add-size__box grid col-6">
+						<button class="btn btn-border" type="button">48</button>
+						<button class="btn btn-border" type="button">50</button>
+						<button class="btn btn-border active" type="button">52</button>
+						<button class="btn btn-border" type="button">54</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="black-bg" data-for="desktop-size-select"></div>
+	<!--/Desktop Size Select-->
 	<!--Add item-->
 	<div id="add-item" class="popup popup-down" role="dialog" aria-modal="true">
 		<div class="close"><button type="button" aria-label="Закрыть"><i class="icon delete-icon"></i></button></div>
