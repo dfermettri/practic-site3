@@ -2008,6 +2008,8 @@ section {
 }
 .basket-item {
 	gap:16px;
+	justify-content:flex-start;
+	align-items:flex-start;
 }
 .basket-item__pic {
 	width:100%;
@@ -2062,6 +2064,7 @@ section {
 	gap:20px;
 	align-items:flex-start;
 	min-width:0;
+	flex:1 1 auto;
 }
 .basket-item__right {
 	flex-shrink:0;
@@ -2204,6 +2207,7 @@ section {
 	display:flex;
 	align-items:center;
 	justify-content:center;
+	cursor:pointer;
 }
 .green {
 	background:#449449;

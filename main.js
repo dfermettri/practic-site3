@@ -335,6 +335,9 @@ function initCartSystem({ q, qa, popupSystem }) {
     if (itemIndex === -1) return;
     cartItems.splice(itemIndex, 1);
     renderCart();
+    if (!cartItems.length) {
+      popupSystem.openPopup("basket", true);
+    }
   };
 
   const addItemFromCard = (card, forcedSize = "") => addToCart(getCardProductData(card, forcedSize));
@@ -369,7 +372,7 @@ function initCartSystem({ q, qa, popupSystem }) {
 
   addItemGoToBasketBtn?.addEventListener("click", (e) => {
     e.preventDefault();
-    popupSystem.openPopup("basket");
+    popupSystem.openPopup("basket", true);
   });
 
   renderCart();
@@ -450,6 +453,39 @@ function initGlobalClickDelegation({ q, qa, popupSystem, showInfoMessage, update
         qa("button.btn.btn-border", group).forEach((btn) => btn.classList.remove("active"));
       }
       sizeBtn.classList.add("active");
+
+      const productSizeBlock = sizeBtn.closest(".product-item__size");
+      if (productSizeBlock) {
+        const productSizeLabel = q(".product-select__box span", productSizeBlock);
+        if (productSizeLabel) {
+          productSizeLabel.textContent = sizeBtn.textContent.trim();
+        }
+      }
+    }
+
+    const cardColorDot = e.target.closest(".catalog-item__colors-list .catalog-item__color");
+    if (cardColorDot) {
+      const catalogItem = cardColorDot.closest(".catalog-item");
+      if (!catalogItem) return;
+
+      const sourceList = cardColorDot.closest(".catalog-item__colors-list");
+      const sourceDots = sourceList ? qa(".catalog-item__color", sourceList) : [];
+      const sourceIndex = sourceDots.indexOf(cardColorDot);
+      const colorClass = Array.from(cardColorDot.classList).find((className) => !["catalog-item__color", "active"].includes(className));
+
+      qa(".catalog-item__colors-list", catalogItem).forEach((colorsList) => {
+        const dots = qa(".catalog-item__color", colorsList);
+        if (!dots.length) return;
+
+        dots.forEach((dot) => dot.classList.remove("active"));
+
+        const matchedByColor = colorClass ? dots.find((dot) => dot.classList.contains(colorClass)) : null;
+        const fallbackByIndex = sourceIndex >= 0 ? dots[sourceIndex] : null;
+        const targetDot = matchedByColor || fallbackByIndex || dots[0];
+        targetDot.classList.add("active");
+      });
+
+      return;
     }
 
     const cardBasketBtn = e.target.closest(".catalog-item__basket-box .action-btn");
@@ -681,19 +717,28 @@ function initItemComponentsPanel() {
   const overlay = document.querySelector(".item-components-tooltip-overlay");
   const hitSection = document.querySelector("#hit");
 
-  if (itemComponents && tooltip && overlay) {
+  if (tooltip && overlay) {
+    const tooltipText = tooltip.querySelector(".item-components-tooltip__txt");
+    const defaultTooltipText = tooltipText?.textContent.trim() || "";
+
     const openTooltip = () => {
       tooltip.classList.add("active");
       overlay.classList.add("active");
+    };
+    const openTooltipWithText = (text) => {
+      if (tooltipText && text) {
+        tooltipText.textContent = text;
+      }
+      openTooltip();
     };
     const closeTooltip = () => {
       tooltip.classList.remove("active");
       overlay.classList.remove("active");
     };
 
-    itemComponents.addEventListener("click", (e) => {
+    itemComponents?.addEventListener("click", (e) => {
       e.stopPropagation();
-      openTooltip();
+      openTooltipWithText(defaultTooltipText);
     });
 
     tooltip.querySelector(".item-components-tooltip__close")?.addEventListener("click", (e) => {
@@ -704,6 +749,14 @@ function initItemComponentsPanel() {
     overlay.addEventListener("click", closeTooltip);
 
     document.addEventListener("click", (e) => {
+      const catalogIcon = e.target.closest(".catalog-item__icon");
+      if (catalogIcon) {
+        e.preventDefault();
+        e.stopPropagation();
+        openTooltipWithText(catalogIcon.dataset.text?.trim() || defaultTooltipText);
+        return;
+      }
+
       if (!e.target.closest(".item-components-tooltip") && !e.target.closest(".item-components")) {
         closeTooltip();
       }
