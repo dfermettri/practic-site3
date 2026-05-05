@@ -10,8 +10,26 @@ body {
 	margin:0 0 58px;
 	padding-bottom: 68px !important;
 }
- .scroll-top-btn {
-	display:none !important;
+.scroll-top-btn {
+	display:flex !important;
+	width:40px;
+	height:40px;
+	right:16px;
+	bottom:82px;
+	z-index:10;
+}
+.scroll-top-btn img {
+	width:28px;
+	height:28px;
+}
+body.tabber-at-footer .scroll-top-btn {
+	bottom:16px;
+}
+body:has(.sticky-bottom-bar.active) .scroll-top-btn {
+	bottom:84px;
+}
+body:has(.sticky-bottom-bar.active.above-tabber) .scroll-top-btn {
+	bottom:142px;
 }
 .desktop-sticky-add {
 	display:none !important;
@@ -121,6 +139,9 @@ main input[type=submit], main button, .btn {
 header .wrapper {
 	padding:16px 0;
 }
+.page-header .wrapper {
+	border-bottom:0;
+}
 .header-logo__box {
 	order:1;
 	width:100%;
@@ -175,6 +196,7 @@ position:relative;
 	display: block !important;
 }
 .page-header {
+	border-bottom:1px solid var(--line);
 	transition: transform 0.3s ease !important;
 }
 .page-header.hidden {
@@ -1113,6 +1135,15 @@ body:has(.page-header) main {
 	display: block !important;
 	border-radius: 8px !important;
 }
+.product-gallery__look {
+	min-width: 32px !important;
+	width: 32px !important;
+	padding: 0 !important;
+	gap: 0 !important;
+}
+.product-gallery__look span {
+	display: none !important;
+}
 .product-gallery__nav {
 	display: flex !important;
 	justify-content: center !important;
@@ -1180,8 +1211,8 @@ body:has(.page-header) main {
 	display: none !important;
 }
 .product-item__gallery .label {
-	top: 24px !important;
-	left: 24px !important;
+	top: 16px !important;
+	left: 16px !important;
 	z-index: 3 !important;
 	font-size: 12px !important;
 	padding: 6px 10px !important;
@@ -1450,6 +1481,10 @@ body:has(.page-header) main {
 	text-align: left !important;
 }
 .slider-product {
+	margin-right: 0 !important;
+	padding-right: 0 !important;
+}
+.slider-product .swiper-clip {
 	margin-right: 0 !important;
 	padding-right: 0 !important;
 }

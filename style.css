@@ -67,6 +67,13 @@
 	position:relative;
 	overflow:hidden;
 }
+.slider-hit,
+.slider-catalog,
+.slider-product,
+.slider-similar,
+.slider-like {
+	overflow:visible;
+}
 .swiper-wrapper {
 	display:flex;
 	will-change:transform;
@@ -82,23 +89,35 @@
 .slider-like .swiper-wrapper {
 	gap:8px;
 }
+.slider-hit .swiper-wrapper,
+.slider-catalog .swiper-wrapper,
+.slider-product .swiper-wrapper,
+.slider-similar .swiper-wrapper,
+.slider-like .swiper-wrapper {
+	margin:0;
+}
 .swiper-slide .catalog-item {
 	height:100%;
 }
 .swiper-nav {
 	position:absolute;
-	left:0;
-	right:0;
-	top:50%;
-	transform:translateY(-50%);
+	left:-24px;
+	right:-24px;
+	top:calc(50% - 48px/2 - 46px);
 	display:flex;
 	justify-content:space-between;
 	align-items:center;
 	pointer-events:none;
+	z-index:5;
 }
 .swiper-nav .swiper-button-next,
 .swiper-nav .swiper-button-prev {
 	pointer-events:auto;
+}
+.slider-product .swiper-nav {
+	left:var(--slider-product-nav-left, -24px);
+	right:var(--slider-product-nav-right, -24px);
+	top:var(--slider-product-nav-top, calc(50% - 48px/2 - 46px));
 }
 html {
 	overflow-x:hidden; 
@@ -330,7 +349,7 @@ main input[type=submit]:hover, main button:hover, .btn:hover, .filters-header bu
 }
 .wrapper {
 	width:100%;
-	max-width:1610px;
+	max-width:auto;
 	margin:0 auto;
 	padding:0 60px;
 	box-sizing:border-box;
@@ -3020,7 +3039,7 @@ input[type=number] {
 }
 .product-item__box {
 	position:relative;
-	justify-content:center;
+	justify-content:flex-start;
 	align-items:flex-start;
 	gap:24px;
 }
@@ -3031,6 +3050,11 @@ input[type=number] {
 	max-width:1208px;
 	min-width:0;
 	margin-left:0;
+}
+@media screen and (min-width:1201px) {
+.product-item__gallery {
+	margin-left:-60px;
+}
 }
 .product-info__block {
 	flex:0 1 628px;
@@ -3052,8 +3076,56 @@ input[type=number] {
 	display:block;
 	object-fit: cover;
 }
+.product-gallery {
+	touch-action:pan-y;
+}
+.product-gallery__item {
+	position:relative;
+}
+.product-gallery__look {
+	position:absolute;
+	right:22px;
+	bottom:22px;
+	z-index:2;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	gap:6px;
+	width:max-content;
+	min-width:154px;
+	height:32px;
+	padding:0 10px;
+	box-sizing:border-box;
+	background:var(--white);
+	border-radius:6px;
+	font-family:var(--font-default);
+	font-weight:500;
+	font-size:14px;
+	line-height:140%;
+	text-transform:uppercase;
+	color:var(--font-color);
+	white-space:nowrap;
+}
+.product-gallery__look span {
+	display:flex;
+	align-items:center;
+	height:16px;
+	line-height:16px;
+	transform:translateY(2px);
+}
+.product-gallery__look:hover {
+	color:var(--font-color);
+}
+.product-gallery__look img {
+	width:16px;
+	height:16px;
+	flex:0 0 16px;
+}
 .product-gallery__item a:hover {
 	cursor:zoom-in;
+}
+.product-gallery__item .product-gallery__look:hover {
+	cursor:pointer;
 }
 .product-gallery__item img {
 	display:block;
@@ -3062,8 +3134,8 @@ input[type=number] {
 	position:relative;
 }
 .product-item__gallery .label {
-	top:22px;
-	left:22px;
+	top:16px;
+	left:16px;
 	font-size:var(--font-small);
 }
 .product-item__gallery.label i {
@@ -3278,7 +3350,9 @@ input[type=number] {
     object-fit: cover;
     display: block;
 }
-.product-color__select .jq-radio.checked + label, .product-color__select label:hover {
+.product-color__select input:checked + label,
+.product-color__select .jq-radio.checked + label,
+.product-color__select label:hover {
 	border-color:var(--font-color);
 }
 .product-item__color {
@@ -3382,6 +3456,11 @@ input[type=number] {
 	margin-right:-60px;
 	padding-right:60px;
 }
+.slider-product .swiper-clip {
+	margin-right:-60px;
+	padding-right:60px;
+	overflow:hidden;
+}
 .slider-product .catalog-item__price {
 	font-size:18px;
 }
@@ -3476,7 +3555,6 @@ input[type=number] {
 	font-size:var(--font-small);
 }
 #reviews .btn {
-	margin:32px 0 0;
 	padding:14px 42px 10px;
 }
 .review-item__date-box {
@@ -3533,6 +3611,13 @@ input[type=number] {
 	width: 492px;
 	height: 154px;
 	gap: 24px;
+}
+.reviews-empty__content p {
+	font-family:var(--font-default);
+	font-weight:400;
+	font-size:16px;
+	line-height:var(--font-line);
+	color:#2D4261;
 }
 
 .reviews-empty__content .btn {

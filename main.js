@@ -634,38 +634,79 @@ function initProductGallery({ q }) {
   items[0].classList.add("active");
 
   let currentIndex = 0;
+  let swipeStart = null;
+  let shouldSuppressClick = false;
+  const swipeThreshold = 40;
   const segmentsContainer = document.createElement("div");
   segmentsContainer.className = "product-gallery__segments";
 
   const showItem = (index) => {
+    currentIndex = (index + items.length) % items.length;
     items.forEach((item, i) => {
-      item.classList.toggle("active", i === index);
+      item.classList.toggle("active", i === currentIndex);
     });
     const segments = Array.from(segmentsContainer.querySelectorAll(".product-gallery__segment"));
     segments.forEach((segment, i) => {
-      segment.classList.toggle("active", i === index);
+      segment.classList.toggle("active", i === currentIndex);
     });
+  };
+
+  const resetSwipe = () => {
+    swipeStart = null;
+  };
+
+  const startSwipe = (e) => {
+    if (e.pointerType === "mouse" && e.button !== 0) return;
+    swipeStart = {
+      x: e.clientX,
+      y: e.clientY,
+    };
+
+    if (gallery.setPointerCapture && e.pointerId !== undefined) {
+      gallery.setPointerCapture(e.pointerId);
+    }
+  };
+
+  const finishSwipe = (e) => {
+    if (!swipeStart) return;
+
+    const deltaX = e.clientX - swipeStart.x;
+    const deltaY = e.clientY - swipeStart.y;
+    resetSwipe();
+
+    if (Math.abs(deltaX) < swipeThreshold || Math.abs(deltaX) <= Math.abs(deltaY)) return;
+
+    shouldSuppressClick = true;
+    showItem(currentIndex + (deltaX < 0 ? 1 : -1));
+    window.setTimeout(() => {
+      shouldSuppressClick = false;
+    }, 0);
   };
 
   items.forEach((_, index) => {
     const segment = document.createElement("div");
     segment.className = `product-gallery__segment${index === 0 ? " active" : ""}`;
     segment.addEventListener("click", () => {
-      currentIndex = index;
-      showItem(currentIndex);
+      showItem(index);
     });
     segmentsContainer.appendChild(segment);
   });
 
   gallery.parentNode.insertBefore(segmentsContainer, gallery.nextSibling);
 
-  items.forEach((item, index) => {
-    item.addEventListener("click", (e) => {
-      e.stopPropagation();
-      currentIndex = (index + 1) % items.length;
-      showItem(currentIndex);
-    });
+  gallery.addEventListener("pointerdown", startSwipe);
+  gallery.addEventListener("pointerup", finishSwipe);
+  gallery.addEventListener("pointercancel", resetSwipe);
+  gallery.addEventListener("dragstart", (e) => {
+    e.preventDefault();
   });
+  gallery.addEventListener("click", (e) => {
+    if (!shouldSuppressClick) return;
+    e.preventDefault();
+    e.stopPropagation();
+  }, true);
+
+  showItem(currentIndex);
 }
 
 function initRelatedProductsPlacement() {
@@ -708,6 +749,75 @@ function initRelatedProductsPlacement() {
   } else if (desktopMedia.addListener) {
     desktopMedia.addListener(placeSliderByViewport);
   }
+}
+
+function initProductSliderNavigationPosition() {
+  const sliderProduct = document.querySelector(".slider-product");
+  const sliderProductNav = sliderProduct?.querySelector(".swiper-nav");
+  const desktopMedia = window.matchMedia(DESKTOP_MEDIA_QUERY);
+  let frameId = null;
+
+  if (!sliderProduct || !sliderProductNav) return;
+
+  const resetNavigationPosition = () => {
+    sliderProductNav.style.removeProperty("--slider-product-nav-left");
+    sliderProductNav.style.removeProperty("--slider-product-nav-right");
+    sliderProductNav.style.removeProperty("--slider-product-nav-top");
+  };
+
+  const getPageGutters = () => {
+    const wrapper = document.querySelector("#hit.wrapper") || document.querySelector(".wrapper");
+    if (!wrapper) return { left: 60, right: 60 };
+
+    const styles = window.getComputedStyle(wrapper);
+    const left = Number.parseFloat(styles.paddingLeft) || 60;
+    const right = Number.parseFloat(styles.paddingRight) || left;
+    return { left, right };
+  };
+
+  const updateNavigationPosition = () => {
+    frameId = null;
+
+    if (!desktopMedia.matches) {
+      resetNavigationPosition();
+      return;
+    }
+
+    const firstSlide = sliderProduct.querySelector(".swiper-slide");
+    const firstCardImage = firstSlide?.querySelector(".catalog-item__img-box");
+    if (!firstSlide) return;
+
+    const sliderRect = sliderProduct.getBoundingClientRect();
+    const slideRect = firstSlide.getBoundingClientRect();
+    const imageRect = firstCardImage?.getBoundingClientRect() || slideRect;
+    const { right: rightGutter } = getPageGutters();
+    const buttonSize = 48;
+    const horizontalOffset = rightGutter - (window.innerWidth - sliderRect.right);
+
+    sliderProductNav.style.setProperty("--slider-product-nav-left", `${horizontalOffset}px`);
+    sliderProductNav.style.setProperty("--slider-product-nav-right", `${horizontalOffset}px`);
+    sliderProductNav.style.setProperty("--slider-product-nav-top", `${imageRect.top - sliderRect.top + imageRect.height / 2 - buttonSize / 2}px`);
+  };
+
+  const scheduleNavigationPositionUpdate = () => {
+    if (frameId) return;
+    frameId = window.requestAnimationFrame(updateNavigationPosition);
+  };
+
+  window.addEventListener("resize", scheduleNavigationPositionUpdate);
+  if (desktopMedia.addEventListener) {
+    desktopMedia.addEventListener("change", scheduleNavigationPositionUpdate);
+  } else if (desktopMedia.addListener) {
+    desktopMedia.addListener(scheduleNavigationPositionUpdate);
+  }
+
+  sliderProduct.querySelectorAll("img").forEach((image) => {
+    if (!image.complete) {
+      image.addEventListener("load", scheduleNavigationPositionUpdate, { once: true });
+    }
+  });
+
+  scheduleNavigationPositionUpdate();
 }
 
 function initItemComponentsPanel() {
@@ -775,10 +885,8 @@ function initScrollTopButton() {
   const scrollTopBtn = document.querySelector(".scroll-top-btn");
   if (!scrollTopBtn) return;
 
-  const desktopMedia = window.matchMedia(DESKTOP_MEDIA_QUERY);
   const toggleScrollTopBtn = () => {
-    const shouldShow = desktopMedia.matches && window.scrollY > 120;
-    scrollTopBtn.classList.toggle("visible", shouldShow);
+    scrollTopBtn.classList.toggle("visible", window.scrollY > 120);
   };
 
   scrollTopBtn.addEventListener("click", (e) => {
@@ -895,6 +1003,7 @@ function initStickyBottomBar() {
   const stickyBar = document.querySelector(".sticky-bottom-bar");
   const tabber = document.querySelector(".tabber-menu__box");
   const header = document.querySelector(".page-header");
+  const headerMenu = document.querySelector("#menu");
   const footerBottomBox = document.querySelector(".footer-bottom__box");
   const body = document.body;
   if (!stickyBar) return;
@@ -950,7 +1059,11 @@ function initStickyBottomBar() {
           stickyBar.classList.remove("above-tabber");
         }
 
-        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        const isHeaderMenuOpen = headerMenu?.classList.contains(CLASS_OPEN);
+
+        if (isHeaderMenuOpen) {
+          header?.classList.remove("hidden");
+        } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
           tabber?.classList.add("hidden");
           header?.classList.add("hidden");
           stickyBar.classList.remove("above-tabber");
@@ -993,6 +1106,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initSliders({ q, qa });
   initProductGallery({ q });
   initRelatedProductsPlacement();
+  initProductSliderNavigationPosition();
   initItemComponentsPanel();
   initScrollTopButton();
   initDesktopStickyAddBar({ q, qa });
