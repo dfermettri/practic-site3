@@ -1788,6 +1788,26 @@ section {
 	max-width:440px;
 	text-align:left;
 }
+.legal-box.flex input[type="checkbox"],
+.legal-box.flex .jq-checkbox {
+	width:24px;
+	height:24px;
+	flex:0 0 24px;
+	margin:0;
+	box-sizing:border-box;
+	border:1px solid transparent;
+	border-radius:4px;
+	background:var(--white);
+	cursor:pointer;
+	appearance:none;
+	-webkit-appearance:none;
+}
+.legal-box.flex input[type="checkbox"]:checked,
+.legal-box.flex .jq-checkbox.checked {
+	border-color:var(--font-color);
+	background:var(--white) url("img/chexbox-vector.svg") no-repeat center center;
+	background-size:15px 11px;
+}
 .subscribe-txt__box .legal-box {
 	justify-content:center;
 	margin:32px auto 0;
@@ -1917,31 +1937,34 @@ section {
 	line-height:140%;
 	text-transform:uppercase;
 	display:none;
-	width:359px;
+	width:max-content;
+	max-width:calc(100vw - 48px);
 	min-height:42px;
 	z-index:15;
 	border-radius:8px;
 	box-sizing:border-box;
-	align-items:flex-start;
+	align-items:center;
 }
 #info-message.is-visible {
 	display:flex;
 }
 #info-message .flex {
 	display:flex;
-	align-items:flex-start;
+	align-items:center;
 	justify-content:space-between;
 	gap:10px;
-	width:100%;
+	width:auto;
 }
 #info-message span {
-	width:282px;
-	font-size:16px;
+	width:auto;
+	max-width:calc(100vw - 120px);
+	font-size:12px;
 	font-weight:500;
 	line-height:140%;
 	text-align:center;
 	text-transform:uppercase;
 	color:var(--white);
+	white-space:nowrap;
 }
 #info-message .close-box {
 	flex-shrink:0;

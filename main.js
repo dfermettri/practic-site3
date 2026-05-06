@@ -108,6 +108,7 @@ function initCartSystem({ q, qa, popupSystem }) {
   const addItemPopupTitle = q("#add-item .popup-header h3");
   const addItemList = q("#add-item .basket-list");
   const addItemGoToBasketBtn = q("#add-item .popup-scroll > .btn.btn-border");
+  const basketPopup = q("#basket");
   const basketHeaderText = q("#basket .popup-header .popup-txt__box");
   const basketPopupScroll = q("#basket .popup-content__box .popup-scroll");
   const defaultBasketImage = q("#add-item .basket-item__pic img");
@@ -270,6 +271,7 @@ function initCartSystem({ q, qa, popupSystem }) {
 
   const renderBasketPopup = () => {
     if (!basketPopupScroll) return;
+    basketPopup?.classList.toggle("basket-empty", !cartItems.length);
     if (!cartItems.length) {
       if (basketHeaderText) basketHeaderText.textContent = basketEmptyText;
       basketPopupScroll.innerHTML = basketEmptyContent;
@@ -733,6 +735,8 @@ function initProductGallery({ q }) {
   };
 
   const startSwipe = (e) => {
+    const target = e.target instanceof Element ? e.target : e.target.parentElement;
+    if (target?.closest(".product-gallery__look")) return;
     if (e.pointerType === "mouse" && e.button !== 0) return;
     swipeStart = {
       x: e.clientX,
@@ -899,18 +903,26 @@ function initProductSliderNavigationPosition() {
 }
 
 function initProductGalleryLookScroll() {
-  const productGalleryLook = document.querySelector(".product-gallery__look");
   const hitSection = document.querySelector("#hit.wrapper");
   const desktopMedia = window.matchMedia(DESKTOP_MEDIA_QUERY);
 
-  if (!productGalleryLook || !hitSection) return;
+  if (!hitSection) return;
 
-  productGalleryLook.addEventListener("click", (e) => {
-    if (!desktopMedia.matches) return;
+  const scrollToHitSection = (e) => {
+    const target = e.target instanceof Element ? e.target : e.target.parentElement;
+    const productGalleryLook = target?.closest(".product-gallery__look");
+    if (!productGalleryLook || !desktopMedia.matches) return;
 
     e.preventDefault();
-    hitSection.scrollIntoView({ behavior: "smooth", block: "start" });
-  });
+    e.stopPropagation();
+    window.scrollTo({
+      top: hitSection.getBoundingClientRect().top + window.scrollY,
+      behavior: "smooth",
+    });
+  };
+
+  document.addEventListener("pointerup", scrollToHitSection, true);
+  document.addEventListener("click", scrollToHitSection, true);
 }
 
 function initItemComponentsPanel() {
