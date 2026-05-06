@@ -551,8 +551,15 @@ function initLoopSlider(root, { q, qa }) {
   let maxTranslate = 0;
   let currentTranslate = 0;
   let isAnimating = false;
+  let swipeStart = null;
+  let dragStartTranslate = 0;
+  let isDragging = false;
+  let shouldSuppressClick = false;
   const nextBtn = q(".swiper-button-next", root);
   const prevBtn = q(".swiper-button-prev", root);
+  const desktopMedia = window.matchMedia(DESKTOP_MEDIA_QUERY);
+  const dragThreshold = 8;
+  const swipeThreshold = 40;
 
   const applyTranslate = (value, withAnimation = true) => {
     const clamped = Math.max(0, Math.min(value, maxTranslate));
@@ -585,21 +592,118 @@ function initLoopSlider(root, { q, qa }) {
     applyTranslate(clamped, true);
   };
 
-  const getNextTranslate = () => {
-    const target = offsets.find((value) => value > currentTranslate + 1);
+  const getNextTranslateFrom = (baseTranslate = currentTranslate) => {
+    const target = offsets.find((value) => value > baseTranslate + 1);
     return target !== undefined ? target : maxTranslate;
   };
 
-  const getPrevTranslate = () => {
+  const getPrevTranslateFrom = (baseTranslate = currentTranslate) => {
     for (let i = offsets.length - 1; i >= 0; i -= 1) {
-      if (offsets[i] < currentTranslate - 1) return offsets[i];
+      if (offsets[i] < baseTranslate - 1) return offsets[i];
     }
     return 0;
   };
 
+  const getNextTranslate = () => getNextTranslateFrom(currentTranslate);
+  const getPrevTranslate = () => getPrevTranslateFrom(currentTranslate);
+
   const onTransitionEnd = () => {
     isAnimating = false;
     updateButtons();
+  };
+
+  const isMobileSwipeEnabled = () => !desktopMedia.matches && maxTranslate > 0;
+
+  const releasePointer = (e) => {
+    if (root.releasePointerCapture && e?.pointerId !== undefined) {
+      try {
+        root.releasePointerCapture(e.pointerId);
+      } catch {
+        // Pointer capture may already be released by the browser.
+      }
+    }
+  };
+
+  const resetSwipe = (e) => {
+    releasePointer(e);
+    swipeStart = null;
+    dragStartTranslate = 0;
+    isDragging = false;
+    root.classList.remove("is-swiping");
+  };
+
+  const startSwipe = (e) => {
+    if (!isMobileSwipeEnabled()) return;
+    if (isAnimating) return;
+    if (e.pointerType === "mouse" && e.button !== 0) return;
+    if (e.target.closest(".swiper-button-next, .swiper-button-prev, button, input, textarea, select, .btn, [data-popup]")) return;
+
+    swipeStart = {
+      x: e.clientX,
+      y: e.clientY,
+      pointerId: e.pointerId,
+    };
+    dragStartTranslate = currentTranslate;
+  };
+
+  const moveSwipe = (e) => {
+    if (!swipeStart || swipeStart.pointerId !== e.pointerId || !isMobileSwipeEnabled()) return;
+
+    const deltaX = e.clientX - swipeStart.x;
+    const deltaY = e.clientY - swipeStart.y;
+
+    if (!isDragging) {
+      if (Math.abs(deltaX) < dragThreshold && Math.abs(deltaY) < dragThreshold) return;
+      if (Math.abs(deltaX) <= Math.abs(deltaY)) {
+        resetSwipe(e);
+        return;
+      }
+
+      isDragging = true;
+      shouldSuppressClick = true;
+      root.classList.add("is-swiping");
+      if (root.setPointerCapture && e.pointerId !== undefined) {
+        root.setPointerCapture(e.pointerId);
+      }
+    }
+
+    e.preventDefault();
+    applyTranslate(dragStartTranslate - deltaX, false);
+  };
+
+  const finishSwipe = (e) => {
+    if (!swipeStart || swipeStart.pointerId !== e.pointerId) return;
+
+    const deltaX = e.clientX - swipeStart.x;
+    const deltaY = e.clientY - swipeStart.y;
+    const startTranslate = dragStartTranslate;
+    const wasDragging = isDragging;
+    resetSwipe(e);
+
+    if (!wasDragging) return;
+
+    if (Math.abs(deltaX) >= swipeThreshold && Math.abs(deltaX) > Math.abs(deltaY)) {
+      goToTranslate(deltaX < 0 ? getNextTranslateFrom(startTranslate) : getPrevTranslateFrom(startTranslate));
+    } else {
+      goToTranslate(startTranslate);
+    }
+
+    window.setTimeout(() => {
+      shouldSuppressClick = false;
+    }, 0);
+  };
+
+  const cancelSwipe = (e) => {
+    if (!swipeStart) return;
+    const startTranslate = dragStartTranslate;
+    const wasDragging = isDragging;
+    resetSwipe(e);
+    if (wasDragging) {
+      goToTranslate(startTranslate);
+      window.setTimeout(() => {
+        shouldSuppressClick = false;
+      }, 0);
+    }
   };
 
   recalc();
@@ -616,15 +720,29 @@ function initLoopSlider(root, { q, qa }) {
     goToTranslate(getPrevTranslate());
   });
 
+  root.addEventListener("pointerdown", startSwipe);
+  root.addEventListener("pointermove", moveSwipe, { passive: false });
+  root.addEventListener("pointerup", finishSwipe);
+  root.addEventListener("pointercancel", cancelSwipe);
+  root.addEventListener("dragstart", (e) => {
+    if (!desktopMedia.matches) e.preventDefault();
+  });
+  root.addEventListener(
+    "click",
+    (e) => {
+      if (!shouldSuppressClick) return;
+      e.preventDefault();
+      e.stopPropagation();
+    },
+    true
+  );
   wrapper.addEventListener("transitionend", onTransitionEnd);
   window.addEventListener("resize", recalc);
   onTransitionEnd();
 }
 
 function initSliders({ q, qa }) {
-  qa(".swiper.slider-home, .swiper.slider-hit, .swiper.slider-catalog, .swiper.slider-product, .swiper.reviews-slider, .swiper.slider-similar, .swiper.slider-like").forEach((root) =>
-    initLoopSlider(root, { q, qa })
-  );
+  qa(".swiper").forEach((root) => initLoopSlider(root, { q, qa }));
 }
 
 function initProductGallery({ q }) {
