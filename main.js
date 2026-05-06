@@ -40,6 +40,7 @@ function initPopupSystem({ q, qa }) {
     if (menu) menu.classList.remove(CLASS_OPEN);
     qa(".header-menu__box").forEach((box) => box.classList.remove("active"));
     qa(".header-menu__box .menu-btn").forEach((btn) => btn.classList.remove("active"));
+    document.body.classList.remove("fix");
   };
 
   const closeAllPopups = () => {
@@ -76,6 +77,7 @@ function initPopupSystem({ q, qa }) {
     menu.classList.toggle(CLASS_OPEN, shouldOpen);
     headerMenuBtn.classList.toggle("active", shouldOpen);
     headerMenuBox?.classList.toggle("active", shouldOpen);
+    document.body.classList.toggle("fix", shouldOpen);
   };
 
   return {
@@ -636,19 +638,94 @@ function initProductGallery({ q }) {
   let currentIndex = 0;
   let swipeStart = null;
   let shouldSuppressClick = false;
+  let isAnimating = false;
   const swipeThreshold = 40;
+  const desktopMedia = window.matchMedia(DESKTOP_MEDIA_QUERY);
   const segmentsContainer = document.createElement("div");
   segmentsContainer.className = "product-gallery__segments";
 
-  const showItem = (index) => {
-    currentIndex = (index + items.length) % items.length;
-    items.forEach((item, i) => {
-      item.classList.toggle("active", i === currentIndex);
-    });
+  const updateSegments = () => {
     const segments = Array.from(segmentsContainer.querySelectorAll(".product-gallery__segment"));
     segments.forEach((segment, i) => {
       segment.classList.toggle("active", i === currentIndex);
     });
+  };
+
+  const setActiveItem = () => {
+    items.forEach((item, i) => {
+      item.classList.toggle("active", i === currentIndex);
+    });
+    updateSegments();
+  };
+
+  const clearAnimationClasses = () => {
+    gallery.classList.remove("is-animating");
+    items.forEach((item) => {
+      item.classList.remove(
+        "is-entering",
+        "is-entering-next",
+        "is-entering-prev",
+        "is-entering-active",
+        "is-leaving",
+        "is-leaving-next",
+        "is-leaving-prev"
+      );
+    });
+  };
+
+  const animateItemChange = (fromIndex, direction) => {
+    const outgoing = items[fromIndex];
+    const incoming = items[currentIndex];
+    const isNext = direction > 0;
+
+    isAnimating = true;
+    clearAnimationClasses();
+    outgoing.classList.add("is-leaving");
+    incoming.classList.add("is-entering", isNext ? "is-entering-next" : "is-entering-prev");
+    gallery.classList.add("is-animating");
+
+    window.requestAnimationFrame(() => {
+      outgoing.classList.add(isNext ? "is-leaving-next" : "is-leaving-prev");
+      incoming.classList.add("is-entering-active");
+    });
+
+    const finishAnimation = () => {
+      incoming.removeEventListener("transitionend", onTransitionEnd);
+      window.clearTimeout(fallbackTimer);
+      isAnimating = false;
+      clearAnimationClasses();
+      setActiveItem();
+    };
+
+    const onTransitionEnd = (e) => {
+      if (e.target === incoming && e.propertyName === "transform") {
+        finishAnimation();
+      }
+    };
+
+    const fallbackTimer = window.setTimeout(finishAnimation, 450);
+    incoming.addEventListener("transitionend", onTransitionEnd);
+  };
+
+  const showItem = (index, direction = 0) => {
+    if (isAnimating) return;
+
+    const nextIndex = (index + items.length) % items.length;
+    if (nextIndex === currentIndex) {
+      updateSegments();
+      return;
+    }
+
+    const previousIndex = currentIndex;
+    currentIndex = nextIndex;
+    updateSegments();
+
+    if (!desktopMedia.matches && direction) {
+      animateItemChange(previousIndex, direction);
+      return;
+    }
+
+    setActiveItem();
   };
 
   const resetSwipe = () => {
@@ -677,7 +754,8 @@ function initProductGallery({ q }) {
     if (Math.abs(deltaX) < swipeThreshold || Math.abs(deltaX) <= Math.abs(deltaY)) return;
 
     shouldSuppressClick = true;
-    showItem(currentIndex + (deltaX < 0 ? 1 : -1));
+    const direction = deltaX < 0 ? 1 : -1;
+    showItem(currentIndex + direction, direction);
     window.setTimeout(() => {
       shouldSuppressClick = false;
     }, 0);
@@ -687,7 +765,7 @@ function initProductGallery({ q }) {
     const segment = document.createElement("div");
     segment.className = `product-gallery__segment${index === 0 ? " active" : ""}`;
     segment.addEventListener("click", () => {
-      showItem(index);
+      showItem(index, index > currentIndex ? 1 : -1);
     });
     segmentsContainer.appendChild(segment);
   });
@@ -818,6 +896,21 @@ function initProductSliderNavigationPosition() {
   });
 
   scheduleNavigationPositionUpdate();
+}
+
+function initProductGalleryLookScroll() {
+  const productGalleryLook = document.querySelector(".product-gallery__look");
+  const hitSection = document.querySelector("#hit.wrapper");
+  const desktopMedia = window.matchMedia(DESKTOP_MEDIA_QUERY);
+
+  if (!productGalleryLook || !hitSection) return;
+
+  productGalleryLook.addEventListener("click", (e) => {
+    if (!desktopMedia.matches) return;
+
+    e.preventDefault();
+    hitSection.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
 }
 
 function initItemComponentsPanel() {
@@ -1107,6 +1200,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initProductGallery({ q });
   initRelatedProductsPlacement();
   initProductSliderNavigationPosition();
+  initProductGalleryLookScroll();
   initItemComponentsPanel();
   initScrollTopButton();
   initDesktopStickyAddBar({ q, qa });
